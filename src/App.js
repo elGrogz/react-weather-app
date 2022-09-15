@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const api = {
   key: "8e8a5629885d66a0857172614fc0f5bd",
@@ -6,6 +6,21 @@ const api = {
 };
 
 function App() {
+  const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState({});
+
+  const search = (event) => {
+    if (event.key === "Enter") {
+      fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          setQuery("");
+          setWeather(result);
+        });
+    }
+  };
+
   const dateBuilder = (d) => {
     let months = [
       "January",
@@ -43,15 +58,24 @@ function App() {
     <div className="app">
       <main>
         <div className="search-box">
-          <input type="text" className="search-bar" placeholder="Search..." />
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search..."
+            onChange={(event) => setQuery(event.target.value)}
+            value={query}
+            onKeyDown={(event) => search(event)}
+          />
         </div>
         <div className="location-box">
-          <div className="location">New York City, US</div>
+          <div className="location">
+            {weather.name}, {weather.sys.country}
+          </div>
           <div className="date">{dateBuilder(new Date())}</div>
         </div>
         <div className="weather-box">
-          <div className="temperature">15˚C</div>
-          <div className="weather">Cloudy</div>
+          <div className="temperature">{weather.main.temp}°C</div>
+          <div className="weather">{weather.weather[0].main}</div>
         </div>
       </main>
     </div>

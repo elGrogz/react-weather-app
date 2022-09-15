@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* accounts for any padding and margin, eg. 50px element plus 10px margin, the element will be 40px*/
 }
 
 body {
@@ -10,9 +10,9 @@ body {
 
 .app {
   background-image: url("../public/cold-bg.jpeg");
-  background-size: cover;
-  background-position: bottom;
-  transition: 0.4 ease-out;
+  background-size: cover; /* scales the image to the smallest possible size while keeping the ratio to cover the background */
+  background-position: bottom; /* */
+  transition: 0.4 ease-out; /* */
 }
 
 .app.warm {
@@ -20,29 +20,35 @@ body {
 }
 
 main {
-  min-height: 100vh;
-  background-image: linear-gradient(
+  /* only one main element per document, and it refers to the dominant content */
+  min-height: 100vh; /* vh = percentage viewport height. This means it covers 100% of the viewport */
+  background-image: /* can take multiple images */ linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 0.7)
   );
-  padding: 25px;
+  padding: 25px; /* within the element */
 }
 
 .search-box {
-  width: 100%;
-  margin: 0 0 75px;
+  width: 100%; /* how much width the element takes up within its parent element */
+  margin: 0 0 75px; /* outside the element */
 }
+
+/* block direction - up and down */
+/* inline direction - across */
+/* english is in horizontal writing mode */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow */
 
 .search-bar {
   display: block; /* */
   width: 100%;
   padding: 15px;
 
-  appearance: none;
+  appearance: none; /* auto means it uses the native OS's theming */
   background: none;
   border: none;
-  outline: none;
+  outline: none; /* outside the border */
 
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0px 0px 16px 16px; /* top left, top right, bottom right, bottom left */
@@ -92,7 +98,7 @@ main {
   font-weight: 500;
   color: #fff;
   text-shadow: 4px 4px rgba(0, 0, 0, 0.4);
-  text-align: center;
+  /* text-align: center; */
   box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
 }
 
