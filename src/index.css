@@ -12,11 +12,12 @@ body {
   background-image: url("../public/cold-bg.jpeg");
   background-size: cover; /* scales the image to the smallest possible size while keeping the ratio to cover the background */
   background-position: bottom; /* */
-  transition: 0.4 ease-out; /* */
+  transition: 0.4s ease-out; /* */
 }
 
 .app.warm {
   background-image: url("../public/warm-bg.jpeg");
+  /* transition: all 0.4 ease; */
 }
 
 main {
