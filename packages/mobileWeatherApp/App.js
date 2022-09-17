@@ -8,6 +8,7 @@ import {
   Text,
   useColorScheme,
   View,
+  TextInput,
 } from 'react-native';
 
 const api = {
@@ -76,36 +77,38 @@ function App() {
   };
 
   return (
-    <div className={setBackground()}>
-      <main>
-        <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search..."
-            onChange={event => setQuery(event.target.value)}
-            value={query}
-            onKeyDown={event => search(event)}
-          />
-        </div>
-        {typeof weather.main !== 'undefined' ? (
-          <div>
-            <div className="location-box">
-              <div className="location">
-                {weather.name}, {weather.sys.country}
-              </div>
-              <div className="date">{dateBuilder(new Date())}</div>
-            </div>
-            <div className="weather-box">
-              <div className="temperature">
-                {Math.round(weather.main.temp)}°C
-              </div>
-              <div className="weather">{weather.weather[0].main}</div>
-            </div>
+    <View>
+      <div className={setBackground()}>
+        <main>
+          <div className="search-box">
+            <TextInput
+              type="text"
+              className="search-bar"
+              placeholder="Search..."
+              onChange={event => setQuery(event.target.value)}
+              value={query}
+            />
           </div>
-        ) : null}
-      </main>
-    </div>
+          <button onClick={search}>Get weather info!</button>
+          {typeof weather.main !== 'undefined' ? (
+            <div>
+              <div className="location-box">
+                <div className="location">
+                  {weather.name}, {weather.sys.country}
+                </div>
+                <div className="date">{dateBuilder(new Date())}</div>
+              </div>
+              <div className="weather-box">
+                <div className="temperature">
+                  {Math.round(weather.main.temp)}°C
+                </div>
+                <div className="weather">{weather.weather[0].main}</div>
+              </div>
+            </div>
+          ) : null}
+        </main>
+      </div>
+    </View>
   );
 }
 
