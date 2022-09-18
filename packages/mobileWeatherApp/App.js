@@ -16,6 +16,18 @@ const api = {
   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
 };
 
+const page = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: '#fff',
+  },
+  text: {
+    fontSize: 30,
+    color: '#000',
+  },
+});
+
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
