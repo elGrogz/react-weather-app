@@ -1,32 +1,23 @@
 import React, {useState} from 'react';
 import type {Node} from 'react';
+import Styles from './Styles';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  Button,
   useColorScheme,
   View,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 
 const api = {
   key: '8e8a5629885d66a0857172614fc0f5bd',
   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
 };
-
-const page = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: '#fff',
-  },
-  text: {
-    fontSize: 30,
-    color: '#000',
-  },
-});
 
 function App() {
   const [query, setQuery] = useState('');
@@ -45,14 +36,16 @@ function App() {
   };
 
   const setBackground = () => {
-    let backgroundType = 'app';
+    const coldBackground = require('./public/cold-bg.jpeg');
+    const hotBackground = require('./public/warm-bg.jpeg');
+    let backgroundUrl = coldBackground;
 
     typeof weather.main !== 'undefined'
       ? weather.main.temp > 16
-        ? (backgroundType = 'app warm')
-        : (backgroundType = 'app')
-      : (backgroundType = 'app');
-    return backgroundType;
+        ? (backgroundUrl = hotBackground)
+        : (backgroundUrl = coldBackground)
+      : (backgroundUrl = coldBackground);
+    return backgroundUrl;
   };
 
   const dateBuilder = d => {
@@ -89,37 +82,35 @@ function App() {
   };
 
   return (
-    <View>
-      <div className={setBackground()}>
-        <main>
-          <div className="search-box">
-            <TextInput
-              type="text"
-              className="search-bar"
-              placeholder="Search..."
-              onChange={event => setQuery(event.target.value)}
-              value={query}
-            />
-          </div>
-          <button onClick={search}>Get weather info!</button>
-          {typeof weather.main !== 'undefined' ? (
-            <div>
-              <div className="location-box">
-                <div className="location">
-                  {weather.name}, {weather.sys.country}
-                </div>
-                <div className="date">{dateBuilder(new Date())}</div>
-              </div>
-              <div className="weather-box">
-                <div className="temperature">
-                  {Math.round(weather.main.temp)}°C
-                </div>
-                <div className="weather">{weather.weather[0].main}</div>
-              </div>
-            </div>
-          ) : null}
-        </main>
-      </div>
+    <View style={Styles.container}>
+      <ImageBackground source={setBackground()} style={Styles.backgroundImage}>
+        {/* <View className="search-box">
+          <TextInput
+            type="text"
+            className="search-bar"
+            placeholder="Search..."
+            onChange={event => setQuery(event.target.value)}
+            value={query}
+          />
+        </View>
+        <Button title="Get weather info!" onPress={search} />
+        {typeof weather.main !== 'undefined' ? (
+          <View>
+            <View className="location-box">
+              <Text className="location">
+                {weather.name}, {weather.sys.country}
+              </Text>
+              <Text className="date">{dateBuilder(new Date())}</Text>
+            </View>
+            <View className="weather-box">
+              <Text className="temperature">
+                {Math.round(weather.main.temp)}°C
+              </Text>
+              <Text className="weather">{weather.weather[0].main}</Text>
+            </View>
+          </View>
+        ) : null} */}
+      </ImageBackground>
     </View>
   );
 }
