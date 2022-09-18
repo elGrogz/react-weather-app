@@ -84,7 +84,7 @@ function App() {
   return (
     <View style={Styles.container}>
       <ImageBackground source={setBackground()} style={Styles.backgroundImage}>
-        {/* <View className="search-box">
+        <View style={Styles.searchBox}>
           <TextInput
             type="text"
             className="search-bar"
@@ -93,7 +93,7 @@ function App() {
             value={query}
           />
         </View>
-        <Button title="Get weather info!" onPress={search} />
+        {/* <Button title="Get weather info!" onPress={search} />
         {typeof weather.main !== 'undefined' ? (
           <View>
             <View className="location-box">

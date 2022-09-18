@@ -6,7 +6,6 @@ export default StyleSheet.create({
   // },
   container: {
     flex: 1,
-    // margin: 0,
     // padding: 0,
     // boxSizing:
     //   'border-box' /* accounts for any padding and margin, eg. 50px element plus 10px margin, the element will be 40px*/,
@@ -36,14 +35,16 @@ export default StyleSheet.create({
   //   //   ),
   //   //   padding: "25px", /* within the element */
   //   // },
-  // searchBox: {
-  //     width: "100%", /* how much width the element takes up within its parent element */
-  //     margin: "0 0 75px", /* outside the element */
-  //   },
-  //   /* block direction - up and down */
-  //   /* inline direction - across */
-  //   /* english is in horizontal writing mode */
-  //   /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow */
+  searchBox: {
+    marginTop: '200%',
+    width:
+      '100%' /* how much width the element takes up within its parent element */,
+    // marginTop: '50%' /* outside the element */,
+  },
+  /* block direction - up and down */
+  /* inline direction - across */
+  /* english is in horizontal writing mode */
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout/Block_and_Inline_Layout_in_Normal_Flow */
   // searchBar: {
   //     display: "block", /* */
   //     width: "100%",
