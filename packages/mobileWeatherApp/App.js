@@ -84,8 +84,9 @@ function App() {
   return (
     <View style={Styles.container}>
       <ImageBackground source={setBackground()} style={Styles.backgroundImage}>
-        <View style={Styles.searchBox}>
+        <View style={Styles.search}>
           <TextInput
+            style={Styles.searchBox}
             type="text"
             className="search-bar"
             placeholder="Search..."

@@ -35,12 +35,14 @@ export default StyleSheet.create({
   //   //   ),
   //   //   padding: "25px", /* within the element */
   //   // },
-  searchBox: {
-    marginTop: '200%',
+  search: {
+    marginTop: '20%',
     width:
-      '100%' /* how much width the element takes up within its parent element */,
+      '80%' /* how much width the element takes up within its parent element */,
+    borderColor: 'blue',
     // marginTop: '50%' /* outside the element */,
   },
+  searchBox: {},
   /* block direction - up and down */
   /* inline direction - across */
   /* english is in horizontal writing mode */
