@@ -36,13 +36,22 @@ export default StyleSheet.create({
   //   //   padding: "25px", /* within the element */
   //   // },
   search: {
+    // flex: 1,
     marginTop: '20%',
     width:
       '80%' /* how much width the element takes up within its parent element */,
     borderColor: 'blue',
+    borderWidth: 5,
+    backgroundColor: 'red',
     // marginTop: '50%' /* outside the element */,
   },
-  searchBox: {},
+  // searchBox: {
+  //   color: 'blue',
+  // },
+  getWeatherInfo: {
+    color: 'blue',
+    backgroundColor: 'red',
+  },
   /* block direction - up and down */
   /* inline direction - across */
   /* english is in horizontal writing mode */

@@ -12,6 +12,7 @@ import {
   View,
   TextInput,
   ImageBackground,
+  Pressable,
 } from 'react-native';
 
 const api = {
@@ -82,11 +83,24 @@ function App() {
   };
 
   return (
-    <View style={Styles.container}>
-      <ImageBackground source={setBackground()} style={Styles.backgroundImage}>
-        <View style={Styles.search}>
+    <View style={{flex: 1}}>
+      <ImageBackground
+        source={setBackground()}
+        resizeMethod="cover"
+        // style={{flex: 1, width: '100%', length: '100%'}}
+      >
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: '20%',
+            width:
+              '80%' /* how much width the element takes up within its parent element */,
+            borderColor: 'blue',
+            borderWidth: 5,
+            backgroundColor: 'red',
+          }}>
           <TextInput
-            style={Styles.searchBox}
             type="text"
             className="search-bar"
             placeholder="Search..."
@@ -94,8 +108,20 @@ function App() {
             value={query}
           />
         </View>
-        {/* <Button title="Get weather info!" onPress={search} />
-        {typeof weather.main !== 'undefined' ? (
+        <Pressable
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '30%',
+            color: 'blue',
+            backgroundColor: 'red',
+            borderWidth: 5,
+          }}
+          title="Get weather info!"
+          onPress={search}>
+          <Text>GetWeatherInfo!</Text>
+        </Pressable>
+        {/*} {typeof weather.main !== 'undefined' ? (
           <View>
             <View className="location-box">
               <Text className="location">
