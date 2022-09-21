@@ -24,16 +24,14 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = event => {
-    if (event.key === 'Enter') {
-      fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
-        .then(response => response.json())
-        .then(result => {
-          console.log(result);
-          setQuery('');
-          setWeather(result);
-        });
-    }
+  const search = () => {
+    fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        setQuery('');
+        setWeather(result);
+      });
   };
 
   const setBackground = () => {
@@ -86,19 +84,19 @@ function App() {
     <View style={{flex: 1}}>
       <ImageBackground
         source={setBackground()}
-        resizeMethod="cover"
-        // style={{flex: 1, width: '100%', length: '100%'}}
-      >
+        // resizeMethod="cover"
+        style={{flex: 1, alignItems: 'center'}}>
         <View
           style={{
-            alignItems: 'center',
-            justifyContent: 'center',
+            // alignSelf: 'center',
+            padding: 5,
             marginTop: '20%',
+            marginBottom: 10,
             width:
               '80%' /* how much width the element takes up within its parent element */,
-            borderColor: 'blue',
+            borderColor: 'black',
             borderWidth: 5,
-            backgroundColor: 'red',
+            backgroundColor: 'oldlace',
           }}>
           <TextInput
             type="text"
@@ -110,33 +108,27 @@ function App() {
         </View>
         <Pressable
           style={{
-            alignItems: 'center',
             justifyContent: 'center',
-            width: '30%',
-            color: 'blue',
-            backgroundColor: 'red',
+            backgroundColor: 'oldlace',
             borderWidth: 5,
           }}
-          title="Get weather info!"
-          onPress={search}>
+          onPress={() => search()}>
           <Text>GetWeatherInfo!</Text>
         </Pressable>
-        {/*} {typeof weather.main !== 'undefined' ? (
+        {typeof weather.main !== 'undefined' ? (
           <View>
-            <View className="location-box">
-              <Text className="location">
+            <View style={{}}>
+              <Text style={{}}>
                 {weather.name}, {weather.sys.country}
               </Text>
-              <Text className="date">{dateBuilder(new Date())}</Text>
+              <Text style={{}}>{dateBuilder(new Date())}</Text>
             </View>
-            <View className="weather-box">
-              <Text className="temperature">
-                {Math.round(weather.main.temp)}°C
-              </Text>
-              <Text className="weather">{weather.weather[0].main}</Text>
+            <View style={{}}>
+              <Text style={{}}>{Math.round(weather.main.temp)}°C</Text>
+              <Text style={{}}>{weather.weather[0].main}</Text>
             </View>
           </View>
-        ) : null} */}
+        ) : null}
       </ImageBackground>
     </View>
   );
