@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import type {Node} from 'react';
 import Styles from './Styles';
 import {
@@ -24,11 +24,17 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
+  useEffect(() => {
+    console.log('query: ' + query);
+    console.log('weather: ' + weather.main);
+  });
+
   const search = () => {
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        console.log('query: ' + query);
+        console.log('result: ' + {result});
         setQuery('');
         setWeather(result);
       });
@@ -102,7 +108,7 @@ function App() {
             type="text"
             className="search-bar"
             placeholder="Search..."
-            onChange={event => setQuery(event.target.value)}
+            onChangeText={text => setQuery(text)}
             value={query}
           />
         </View>
