@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import type {Node} from 'react';
 import Styles from './Styles';
 import {
@@ -11,8 +11,10 @@ import {
   useColorScheme,
   View,
   TextInput,
-  ImageBackground,
+  Image,
   Pressable,
+  Animated,
+  ImageBackground,
 } from 'react-native';
 
 const api = {
@@ -26,7 +28,6 @@ function App() {
 
   useEffect(() => {
     console.log('query: ' + query);
-    console.log('weather: ' + weather.main);
   });
 
   const search = () => {
@@ -34,7 +35,7 @@ function App() {
       .then(response => response.json())
       .then(result => {
         console.log('query: ' + query);
-        console.log('result: ' + {result});
+        console.log('result: ' + JSON.stringify(result));
         setQuery('');
         setWeather(result);
       });
@@ -53,6 +54,22 @@ function App() {
     return backgroundUrl;
   };
 
+  const dayBuilder = d => {
+    let days = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+
+    let day = days[d.getDay()];
+
+    return `${day}`;
+  };
+
   const dateBuilder = d => {
     let months = [
       'January',
@@ -68,70 +85,83 @@ function App() {
       'November',
       'December',
     ];
-    let days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
 
-    let day = days[d.getDay()];
     let date = d.getDate();
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`;
+    return `${date} ${month} ${year}`;
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, justifyContent: 'center'}}>
       <ImageBackground
         source={setBackground()}
         // resizeMethod="cover"
-        style={{flex: 1, alignItems: 'center'}}>
+        style={{flex: 1, alignItems: 'flex-start'}}>
         <View
           style={{
-            // alignSelf: 'center',
-            padding: 5,
+            alignSelf: 'center',
+            padding: 10,
             marginTop: '20%',
             marginBottom: 10,
             width:
               '80%' /* how much width the element takes up within its parent element */,
-            borderColor: 'black',
-            borderWidth: 5,
-            backgroundColor: 'oldlace',
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 2,
+            borderRadius: 15,
           }}>
           <TextInput
             type="text"
             className="search-bar"
-            placeholder="Search..."
+            placeholder="Search location..."
             onChangeText={text => setQuery(text)}
             value={query}
           />
         </View>
         <Pressable
           style={{
+            padding: 10,
+            alignSelf: 'center',
             justifyContent: 'center',
-            backgroundColor: 'oldlace',
-            borderWidth: 5,
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 2,
+            borderRadius: 15,
           }}
           onPress={() => search()}>
-          <Text>GetWeatherInfo!</Text>
+          <Text>Get current weather!</Text>
         </Pressable>
         {typeof weather.main !== 'undefined' ? (
           <View>
-            <View style={{}}>
-              <Text style={{}}>
+            <View style={{marginTop: 50}}>
+              <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
+              <Text style={{marginBottom: 20, fontSize: 20}}>
+                {dateBuilder(new Date())}
+              </Text>
+              <Text style={{fontSize: 30}}>
                 {weather.name}, {weather.sys.country}
               </Text>
-              <Text style={{}}>{dateBuilder(new Date())}</Text>
             </View>
             <View style={{}}>
-              <Text style={{}}>{Math.round(weather.main.temp)}°C</Text>
-              <Text style={{}}>{weather.weather[0].main}</Text>
+              <Text style={{fontSize: 100}}>
+                {Math.round(weather.main.temp)}°C
+              </Text>
+            </View>
+            <View
+              style={{
+                width: '80%',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'absolute',
+                bottom: 0,
+                borderWidth: 5,
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                borderColor: 'rgba(255,255,255,0.1)',
+                borderRadius: 15,
+              }}>
+              <Text style={{fontSize: 30}}>{weather.weather[0].main}</Text>
             </View>
           </View>
         ) : null}
