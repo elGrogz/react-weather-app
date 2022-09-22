@@ -135,19 +135,21 @@ function App() {
         </Pressable>
         {typeof weather.main !== 'undefined' ? (
           <View>
-            <View style={{marginTop: 50}}>
-              <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
-              <Text style={{marginBottom: 20, fontSize: 20}}>
-                {dateBuilder(new Date())}
-              </Text>
-              <Text style={{fontSize: 30}}>
-                {weather.name}, {weather.sys.country}
-              </Text>
-            </View>
-            <View style={{}}>
-              <Text style={{fontSize: 100}}>
-                {Math.round(weather.main.temp)}°C
-              </Text>
+            <View>
+              <View style={{marginTop: 50}}>
+                <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
+                <Text style={{marginBottom: 20, fontSize: 20}}>
+                  {dateBuilder(new Date())}
+                </Text>
+                <Text style={{fontSize: 30}}>
+                  {weather.name}, {weather.sys.country}
+                </Text>
+              </View>
+              <View style={{}}>
+                <Text style={{fontSize: 100}}>
+                  {Math.round(weather.main.temp)}°C
+                </Text>
+              </View>
             </View>
             <View
               style={{
