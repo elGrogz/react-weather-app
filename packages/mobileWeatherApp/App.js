@@ -153,6 +153,7 @@ function App() {
             </View>
             <View
               style={{
+                marginTop: 15,
                 width: '80%',
                 alignItems: 'center',
                 justifyContent: 'center',
