@@ -11,3 +11,59 @@ I'm using it as an opportunity to practice the following:
 - Testing (Detox, React test library)
 - Debugging on mobile
 - Typescript
+
+### Weather condition groups
+
+- [ ] Thunderstorm day
+- [ ] Thunderstorm night
+- [ ] Drizzle day
+- [ ] Drizzle night (use rain night?)
+- [ ] Rain day
+- [ ] Rain night
+- [ ] Snow day
+- [ ] Snow night
+- [ ] Atmosphere (kind of a misc group for dust, fog, tornado, etc. Just use default image to start with)
+- [ ] Clear day
+- [ ] Clear night
+- [ ] Clouds day
+- [ ] Clouds night
+
+### Example OpenWeather API `/weather` response
+
+```json
+{
+  "coord": { "lon": 2.3488, "lat": 48.8534 },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 13.94,
+    "feels_like": 13.79,
+    "temp_min": 12.43,
+    "temp_max": 15.68,
+    "pressure": 1013,
+    "humidity": 92
+  },
+  "visibility": 7000,
+  "wind": { "speed": 1.54, "deg": 0 },
+  "clouds": { "all": 100 },
+  "dt": 1664013769,
+  "sys": {
+    "type": 2,
+    "id": 2041230,
+    "country": "FR",
+    "sunrise": 1663997979,
+    "sunset": 1664041545
+  },
+  "timezone": 7200,
+  "id": 2988507,
+  "name": "Paris",
+  "cod": 200
+}
+```
