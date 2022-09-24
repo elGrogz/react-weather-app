@@ -183,25 +183,12 @@ function App() {
             style={{
               flex: 1,
               width: '100%',
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              justifyContent: 'center',
+              marginTop: '20%',
+              // position: 'absolute',
+              // top: 0,
+              // bottom: 0,
+              // justifyContent: 'center',
             }}>
-            <TouchableOpacity
-              style={{
-                padding: 10,
-                alignSelf: 'center',
-                backgroundColor: 'rgba(255,255,255,0.5)',
-                borderColor: 'rgba(255,255,255,0.8)',
-                borderWidth: 2,
-                borderRadius: 15,
-              }}
-              onPress={search}>
-              <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
-                Get current weather!
-              </Text>
-            </TouchableOpacity>
             <View style={{marginLeft: 5}}>
               <View>
                 <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
@@ -217,7 +204,6 @@ function App() {
               </Text>
               <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
             </View>
-            <Button title="Clear" onPress={() => setWeather({})} />
             <View
               style={{
                 flex: 1,
@@ -256,7 +242,7 @@ function App() {
               </View>
             </View>
           </View>
-        ) : null}
+        ) : undefined}
       </ImageBackground>
     </View>
   );
