@@ -24,13 +24,11 @@ function App() {
   // });
 
   const search = () => {
-    console.log('STARTING SEARCH');
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
         setWeather(result);
         setQuery('');
-        console.log('weather: ' + JSON.stringify(weather));
       });
   };
 
@@ -52,34 +50,66 @@ function App() {
 
     let backgroundUrl = defaultImage;
 
-    if (typeof weather.weather !== 'undefined') {
-      switch (weather.weather[0].main) {
-        case 'Clear': {
+    const date = Math.round(Date.now() / 1000);
+    console.log('DATE: ' + date);
+    // console.log('weather DATE: ' + weather.sys.sunset);
+
+    if (
+      typeof weather.weather !== 'undefined' &&
+      typeof weather.sys !== 'undefined'
+    ) {
+      switch (true) {
+        case weather.weather[0].main === 'Clear' && date > weather.sys.sunset: {
+          console.log('DARK CLEAR');
+          backgroundUrl = clearNight;
+          break;
+        }
+        case weather.weather[0].main === 'Clear': {
           backgroundUrl = clearDay;
           break;
         }
-        case 'Clouds': {
+        case weather.weather[0].main === 'Clouds' &&
+          date > weather.sys.sunset: {
+          console.log('DARK CLEAR');
+          backgroundUrl = cloudyNight;
+          break;
+        }
+        case weather.weather[0].main === 'Clouds': {
           backgroundUrl = cloudyDay;
           break;
         }
-        case 'Drizzle': {
+        case weather.weather[0].main === 'Drizzle' &&
+          date > weather.sys.sunset: {
+          backgroundUrl = rainNight;
+          break;
+        }
+        case weather.weather[0].main === 'Drizzle': {
           backgroundUrl = drizzleDay;
           break;
         }
-        case 'Rain': {
+        case weather.weather[0].main === 'Rain' && date > weather.sys.sunset: {
+          backgroundUrl = rainNight;
+          break;
+        }
+        case weather.weather[0].main === 'Rain': {
           backgroundUrl = rainDay;
           break;
         }
-        case 'Snow': {
+        case weather.weather[0].main === 'Snow' && date > weather.sys.sunset: {
+          backgroundUrl = snowNight;
+          break;
+        }
+        case weather.weather[0].main === 'Snow': {
           backgroundUrl = snowDay;
           break;
         }
-        case 'Thunderstorm': {
-          backgroundUrl = thunderstormDay;
+        case weather.weather[0].main === 'Thunderstorm' &&
+          date > weather.sys.sunset: {
+          backgroundUrl = thunderstormNight;
           break;
         }
-        case 'undefined': {
-          backgroundUrl = defaultImage;
+        case weather.weather[0].main === 'Thunderstorm': {
+          backgroundUrl = thunderstormDay;
           break;
         }
         default: {
@@ -89,12 +119,8 @@ function App() {
       }
     }
 
-    // typeof weather.main !== 'undefined'
-    //   ? weather.main.temp > 16
-    //     ? (backgroundUrl = hotBackground)
-    //     : (backgroundUrl = coldBackground)
-    //   : (backgroundUrl = coldBackground);
-    // console.log('BACKGROUND URL: ' + backgroundUrl);
+    console.log(backgroundUrl);
+
     return backgroundUrl;
   };
 
@@ -141,7 +167,10 @@ function App() {
     <View style={{flex: 1}}>
       <ImageBackground
         source={setBackground()}
-        style={{flex: 1, alignItems: 'flex-start'}}>
+        style={{
+          flex: 1,
+          alignItems: 'flex-start',
+        }}>
         <View
           style={{
             alignSelf: 'center',
@@ -184,10 +213,7 @@ function App() {
               flex: 1,
               width: '100%',
               marginTop: '20%',
-              // position: 'absolute',
-              // top: 0,
-              // bottom: 0,
-              // justifyContent: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
             }}>
             <View style={{marginLeft: 5}}>
               <View>
