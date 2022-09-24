@@ -169,7 +169,7 @@ function App() {
               </View>
               <View style={{flex: 1, alignItems: 'center'}}>
                 <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
-                  {Math.round(weather.wind.speed)} mph
+                  {Math.round(weather.wind.speed)} m/s
                 </Text>
                 <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
                   Wind
