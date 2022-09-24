@@ -10,15 +10,15 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  useEffect(() => {
-    console.log('query: ' + query);
-  });
+  // useEffect(() => {
+  //   console.log('query: ' + query);
+  // });
 
   const search = () => {
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
-        console.log('query: ' + query);
+        // console.log('query: ' + query);
         console.log('result: ' + JSON.stringify(result));
         setQuery('');
         setWeather(result);
@@ -28,13 +28,63 @@ function App() {
   const setBackground = () => {
     const coldBackground = require('./public/cold-bg.jpeg');
     const hotBackground = require('./public/warm-bg.jpeg');
-    let backgroundUrl = coldBackground;
+    const defaultImage = require('./public/default.jpg');
+    const clearDay = require('./public/clear-day.jpg');
+    const clearNight = require('./public/clear-night.jpg');
+    const cloudyDay = require('./public/cloudy-day.jpg');
+    const cloudyNight = require('./public/cloudy-night.jpg');
+    const drizzleDay = require('./public/drizzle-day.jpg');
+    const rainDay = require('./public/rain-day.jpg');
+    const rainNight = require('./public/rain-night.jpg');
+    const snowDay = require('./public/snow-day.jpg');
+    const snowNight = require('./public/snow-night.jpg');
+    const thunderstormDay = require('./public/thunderstorm-day.jpg');
+    const thunderstormNight = require('./public/thunderstorm-night.jpg');
 
-    typeof weather.main !== 'undefined'
-      ? weather.main.temp > 16
-        ? (backgroundUrl = hotBackground)
-        : (backgroundUrl = coldBackground)
-      : (backgroundUrl = coldBackground);
+    let backgroundUrl = defaultImage;
+
+    if (typeof weather.main !== 'undefined') {
+      switch (weather.weather[0].main) {
+        case 'Clear': {
+          backgroundUrl = clearDay;
+          break;
+        }
+        case 'Clouds': {
+          backgroundUrl = cloudyDay;
+          break;
+        }
+        case 'Drizzle': {
+          backgroundUrl = drizzleDay;
+          break;
+        }
+        case 'Rain': {
+          backgroundUrl = rainDay;
+          break;
+        }
+        case 'Snow': {
+          backgroundUrl = snowDay;
+          break;
+        }
+        case 'Thunderstorm': {
+          backgroundUrl = thunderstormDay;
+          break;
+        }
+        case 'undefined': {
+          backgroundUrl = defaultImage;
+          break;
+        }
+        default: {
+          backgroundUrl = defaultImage;
+          break;
+        }
+      }
+    }
+
+    // typeof weather.main !== 'undefined'
+    //   ? weather.main.temp > 16
+    //     ? (backgroundUrl = hotBackground)
+    //     : (backgroundUrl = coldBackground)
+    //   : (backgroundUrl = coldBackground);
     return backgroundUrl;
   };
 
@@ -117,7 +167,10 @@ function App() {
               borderRadius: 15,
             },
           ]}
-          onPress={() => search()}>
+          onPress={() => {
+            console.log('PRESSED');
+            search();
+          }}>
           <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
             Get current weather!
           </Text>
