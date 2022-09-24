@@ -105,15 +105,19 @@ function App() {
           />
         </View>
         <Pressable
-          style={{
-            padding: 10,
-            alignSelf: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'rgba(255,255,255,0.5)',
-            borderColor: 'rgba(255,255,255,0.8)',
-            borderWidth: 2,
-            borderRadius: 15,
-          }}
+          style={({pressed}) => [
+            {
+              padding: 10,
+              alignSelf: 'center',
+              justifyContent: 'center',
+              backgroundColor: pressed
+                ? 'rgba(255,255,255,1)'
+                : 'rgba(255,255,255,0.5)',
+              borderColor: 'rgba(255,255,255,0.8)',
+              borderWidth: 2,
+              borderRadius: 15,
+            },
+          ]}
           onPress={() => search()}>
           <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
             Get current weather!
@@ -157,7 +161,7 @@ function App() {
                 <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
                   {Math.round(weather.main.feels_like)}°C
                 </Text>
-                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
                   Feels like
                 </Text>
               </View>
@@ -165,7 +169,7 @@ function App() {
                 <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
                   {Math.round(weather.wind.speed)} mph
                 </Text>
-                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
                   Wind
                 </Text>
               </View>
@@ -173,7 +177,7 @@ function App() {
                 <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
                   {Math.round(weather.main.humidity)}%
                 </Text>
-                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
                   Humidity
                 </Text>
               </View>
