@@ -164,7 +164,7 @@ function App() {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, fontFamily: 'Avenir'}}>
       <ImageBackground
         source={setBackground()}
         style={{
@@ -190,7 +190,11 @@ function App() {
             placeholder="Search location..."
             onChangeText={text => setQuery(text)}
             value={query}
-            style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}
+            style={{
+              fontSize: 20,
+              color: 'rgba(0,0,0,0.5)',
+              fontFamily: 'Avenir',
+            }}
           />
         </View>
         <TouchableOpacity
@@ -203,7 +207,12 @@ function App() {
             borderRadius: 15,
           }}
           onPress={search}>
-          <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
+          <Text
+            style={{
+              fontSize: 20,
+              color: 'rgba(0,0,0,0.5)',
+              fontFamily: 'Avenir',
+            }}>
             Get current weather!
           </Text>
         </TouchableOpacity>
@@ -217,18 +226,27 @@ function App() {
             }}>
             <View style={{marginLeft: 5}}>
               <View>
-                <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
-                <Text style={{marginBottom: 10, fontSize: 20}}>
+                <Text style={{fontSize: 20, fontFamily: 'Avenir'}}>
+                  {dayBuilder(new Date())}
+                </Text>
+                <Text
+                  style={{
+                    marginBottom: 10,
+                    fontSize: 20,
+                    fontFamily: 'Avenir',
+                  }}>
                   {dateBuilder(new Date())}
                 </Text>
-                <Text style={{fontSize: 30}}>
+                <Text style={{fontSize: 50, fontFamily: 'Avenir'}}>
                   {weather.name}, {weather.sys.country}
                 </Text>
               </View>
-              <Text style={{fontSize: 100}}>
+              <Text style={{fontSize: 100, fontFamily: 'Avenir'}}>
                 {Math.round(weather.main.temp)}°C
               </Text>
-              <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
+              <Text style={{fontSize: 40, fontFamily: 'Avenir'}}>
+                {weather.weather[0].main}
+              </Text>
             </View>
             <View
               style={{
@@ -243,26 +261,56 @@ function App() {
                 borderRadius: 10,
               }}>
               <View style={{flex: 1, alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 30,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   {Math.round(weather.main.feels_like)}°C
                 </Text>
-                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   Feels like
                 </Text>
               </View>
               <View style={{flex: 1, alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 30,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   {Math.round(weather.wind.speed)} m/s
                 </Text>
-                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   Wind
                 </Text>
               </View>
               <View style={{flex: 1, alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 30,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   {Math.round(weather.main.humidity)}%
                 </Text>
-                <Text style={{fontSize: 18, color: 'rgba(255,255,255,0.8)'}}>
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: 'rgba(255,255,255,0.8)',
+                    fontFamily: 'Avenir',
+                  }}>
                   Humidity
                 </Text>
               </View>
