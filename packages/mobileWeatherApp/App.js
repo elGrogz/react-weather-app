@@ -1,21 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
-import type {Node} from 'react';
-import Styles from './Styles';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  Button,
-  useColorScheme,
-  View,
-  TextInput,
-  Image,
-  Pressable,
-  Animated,
-  ImageBackground,
-} from 'react-native';
+import {Text, View, TextInput, Pressable, ImageBackground} from 'react-native';
 
 const api = {
   key: '8e8a5629885d66a0857172614fc0f5bd',
@@ -94,10 +78,9 @@ function App() {
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center'}}>
+    <View style={{flex: 1}}>
       <ImageBackground
         source={setBackground()}
-        // resizeMethod="cover"
         style={{flex: 1, alignItems: 'flex-start'}}>
         <View
           style={{
@@ -108,7 +91,7 @@ function App() {
             width:
               '80%' /* how much width the element takes up within its parent element */,
             backgroundColor: 'rgba(255,255,255,0.5)',
-            borderColor: 'rgba(255,255,255,0.1)',
+            borderColor: 'rgba(255,255,255,0.8)',
             borderWidth: 2,
             borderRadius: 15,
           }}>
@@ -118,6 +101,7 @@ function App() {
             placeholder="Search location..."
             onChangeText={text => setQuery(text)}
             value={query}
+            style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}
           />
         </View>
         <Pressable
@@ -126,16 +110,18 @@ function App() {
             alignSelf: 'center',
             justifyContent: 'center',
             backgroundColor: 'rgba(255,255,255,0.5)',
-            borderColor: 'rgba(255,255,255,0.1)',
+            borderColor: 'rgba(255,255,255,0.8)',
             borderWidth: 2,
             borderRadius: 15,
           }}
           onPress={() => search()}>
-          <Text>Get current weather!</Text>
+          <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
+            Get current weather!
+          </Text>
         </Pressable>
         {typeof weather.main !== 'undefined' ? (
           <View style={{flex: 1, width: '100%'}}>
-            <View>
+            <View style={{marginLeft: 5}}>
               <View style={{marginTop: 50}}>
                 <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
                 <Text style={{marginBottom: 20, fontSize: 20}}>
@@ -146,26 +132,51 @@ function App() {
                 </Text>
               </View>
               <View style={{}}>
-                <Text style={{fontSize: 100}}>
+                <Text
+                  style={{
+                    fontSize: 100,
+                  }}>
                   {Math.round(weather.main.temp)}°C
                 </Text>
+                <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
               </View>
             </View>
             <View
               style={{
+                flex: 1,
+                flexDirection: 'row',
                 marginBottom: 50,
-                alignItems: 'center',
                 alignSelf: 'center',
-                // justifyContent: 'center',
                 position: 'absolute',
                 bottom: 1,
                 width: '80%',
-                borderWidth: 5,
-                backgroundColor: 'rgba(255,255,255,0.5)',
-                borderColor: 'rgba(255,255,255,0.1)',
-                borderRadius: 15,
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                borderRadius: 10,
               }}>
-              <Text style={{fontSize: 30}}>{weather.weather[0].main}</Text>
+              <View style={{flex: 1, alignItems: 'center'}}>
+                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                  {Math.round(weather.main.feels_like)}°C
+                </Text>
+                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                  Feels like
+                </Text>
+              </View>
+              <View style={{flex: 1, alignItems: 'center'}}>
+                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                  {Math.round(weather.wind.speed)} mph
+                </Text>
+                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                  Wind
+                </Text>
+              </View>
+              <View style={{flex: 1, alignItems: 'center'}}>
+                <Text style={{fontSize: 30, color: 'rgba(255,255,255,0.8)'}}>
+                  {Math.round(weather.main.humidity)}%
+                </Text>
+                <Text style={{fontSize: 20, color: 'rgba(255,255,255,0.8)'}}>
+                  Humidity
+                </Text>
+              </View>
             </View>
           </View>
         ) : null}
