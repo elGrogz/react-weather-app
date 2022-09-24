@@ -109,7 +109,6 @@ function App() {
             {
               padding: 10,
               alignSelf: 'center',
-              justifyContent: 'center',
               backgroundColor: pressed
                 ? 'rgba(255,255,255,1)'
                 : 'rgba(255,255,255,0.5)',
@@ -124,26 +123,29 @@ function App() {
           </Text>
         </Pressable>
         {typeof weather.main !== 'undefined' ? (
-          <View style={{flex: 1, width: '100%'}}>
+          <View
+            style={{
+              flex: 1,
+              width: '100%',
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              justifyContent: 'center',
+            }}>
             <View style={{marginLeft: 5}}>
-              <View style={{marginTop: 50}}>
+              <View>
                 <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
-                <Text style={{marginBottom: 20, fontSize: 20}}>
+                <Text style={{marginBottom: 10, fontSize: 20}}>
                   {dateBuilder(new Date())}
                 </Text>
                 <Text style={{fontSize: 30}}>
                   {weather.name}, {weather.sys.country}
                 </Text>
               </View>
-              <View style={{}}>
-                <Text
-                  style={{
-                    fontSize: 100,
-                  }}>
-                  {Math.round(weather.main.temp)}°C
-                </Text>
-                <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
-              </View>
+              <Text style={{fontSize: 100}}>
+                {Math.round(weather.main.temp)}°C
+              </Text>
+              <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
             </View>
             <View
               style={{
