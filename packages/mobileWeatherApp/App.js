@@ -1,5 +1,13 @@
 import React, {useEffect, useState, useRef} from 'react';
-import {Text, View, TextInput, Pressable, ImageBackground} from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  ImageBackground,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 
 const api = {
   key: '8e8a5629885d66a0857172614fc0f5bd',
@@ -9,19 +17,20 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  // const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
 
   // useEffect(() => {
   //   console.log('query: ' + query);
   // });
 
   const search = () => {
+    console.log('STARTING SEARCH');
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
-        // console.log('query: ' + query);
-        console.log('result: ' + JSON.stringify(result));
-        setQuery('');
         setWeather(result);
+        setQuery('');
+        console.log('weather: ' + JSON.stringify(weather));
       });
   };
 
@@ -43,7 +52,7 @@ function App() {
 
     let backgroundUrl = defaultImage;
 
-    if (typeof weather.main !== 'undefined') {
+    if (typeof weather.weather !== 'undefined') {
       switch (weather.weather[0].main) {
         case 'Clear': {
           backgroundUrl = clearDay;
@@ -85,6 +94,7 @@ function App() {
     //     ? (backgroundUrl = hotBackground)
     //     : (backgroundUrl = coldBackground)
     //   : (backgroundUrl = coldBackground);
+    // console.log('BACKGROUND URL: ' + backgroundUrl);
     return backgroundUrl;
   };
 
@@ -154,27 +164,20 @@ function App() {
             style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}
           />
         </View>
-        <Pressable
-          style={({pressed}) => [
-            {
-              padding: 10,
-              alignSelf: 'center',
-              backgroundColor: pressed
-                ? 'rgba(255,255,255,1)'
-                : 'rgba(255,255,255,0.5)',
-              borderColor: 'rgba(255,255,255,0.8)',
-              borderWidth: 2,
-              borderRadius: 15,
-            },
-          ]}
-          onPress={() => {
-            console.log('PRESSED');
-            search();
-          }}>
+        <TouchableOpacity
+          style={{
+            padding: 10,
+            alignSelf: 'center',
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderColor: 'rgba(255,255,255,0.8)',
+            borderWidth: 2,
+            borderRadius: 15,
+          }}
+          onPress={search}>
           <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
             Get current weather!
           </Text>
-        </Pressable>
+        </TouchableOpacity>
         {typeof weather.main !== 'undefined' ? (
           <View
             style={{
@@ -185,6 +188,20 @@ function App() {
               bottom: 0,
               justifyContent: 'center',
             }}>
+            <TouchableOpacity
+              style={{
+                padding: 10,
+                alignSelf: 'center',
+                backgroundColor: 'rgba(255,255,255,0.5)',
+                borderColor: 'rgba(255,255,255,0.8)',
+                borderWidth: 2,
+                borderRadius: 15,
+              }}
+              onPress={search}>
+              <Text style={{fontSize: 20, color: 'rgba(0,0,0,0.5)'}}>
+                Get current weather!
+              </Text>
+            </TouchableOpacity>
             <View style={{marginLeft: 5}}>
               <View>
                 <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
@@ -200,6 +217,7 @@ function App() {
               </Text>
               <Text style={{fontSize: 40}}>{weather.weather[0].main}</Text>
             </View>
+            <Button title="Clear" onPress={() => setWeather({})} />
             <View
               style={{
                 flex: 1,
