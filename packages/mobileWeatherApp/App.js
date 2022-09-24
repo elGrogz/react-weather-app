@@ -134,7 +134,7 @@ function App() {
           <Text>Get current weather!</Text>
         </Pressable>
         {typeof weather.main !== 'undefined' ? (
-          <View>
+          <View style={{flex: 1, width: '100%'}}>
             <View>
               <View style={{marginTop: 50}}>
                 <Text style={{fontSize: 20}}>{dayBuilder(new Date())}</Text>
@@ -153,12 +153,13 @@ function App() {
             </View>
             <View
               style={{
-                marginTop: 15,
-                width: '80%',
+                marginBottom: 50,
                 alignItems: 'center',
-                justifyContent: 'center',
+                alignSelf: 'center',
+                // justifyContent: 'center',
                 position: 'absolute',
-                bottom: 0,
+                bottom: 1,
+                width: '80%',
                 borderWidth: 5,
                 backgroundColor: 'rgba(255,255,255,0.5)',
                 borderColor: 'rgba(255,255,255,0.1)',
