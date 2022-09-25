@@ -237,7 +237,7 @@ function App() {
                   }}>
                   {dateBuilder(new Date())}
                 </Text>
-                <Text style={{fontSize: 50, fontFamily: 'Avenir'}}>
+                <Text style={{fontSize: 40, fontFamily: 'Avenir'}}>
                   {weather.name}, {weather.sys.country}
                 </Text>
               </View>
