@@ -3,9 +3,7 @@ import {
   Text,
   View,
   TextInput,
-  Pressable,
   ImageBackground,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 
@@ -32,6 +30,7 @@ function App() {
       });
   };
 
+  // set when search is completed
   const setBackground = () => {
     const coldBackground = require('./public/cold-bg.jpeg');
     const hotBackground = require('./public/warm-bg.jpeg');
@@ -52,13 +51,13 @@ function App() {
 
     const date = Math.round(Date.now() / 1000);
     console.log('DATE: ' + date);
-    const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
-    console.log('isNight: ' + isNight);
 
     if (
       typeof weather.weather !== 'undefined' &&
       typeof weather.sys !== 'undefined'
     ) {
+      const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
+      console.log('isNight: ' + isNight);
       switch (true) {
         case weather.weather[0].main === 'Clear' && isNight: {
           console.log('DARK CLEAR');
