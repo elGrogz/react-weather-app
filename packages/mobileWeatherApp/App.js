@@ -52,14 +52,15 @@ function App() {
 
     const date = Math.round(Date.now() / 1000);
     console.log('DATE: ' + date);
-    // console.log('weather DATE: ' + weather.sys.sunset);
+    const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
+    console.log('isNight: ' + isNight);
 
     if (
       typeof weather.weather !== 'undefined' &&
       typeof weather.sys !== 'undefined'
     ) {
       switch (true) {
-        case weather.weather[0].main === 'Clear' && date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Clear' && isNight: {
           console.log('DARK CLEAR');
           backgroundUrl = clearNight;
           break;
@@ -68,8 +69,7 @@ function App() {
           backgroundUrl = clearDay;
           break;
         }
-        case weather.weather[0].main === 'Clouds' &&
-          date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Clouds' && isNight: {
           console.log('DARK CLEAR');
           backgroundUrl = cloudyNight;
           break;
@@ -78,8 +78,7 @@ function App() {
           backgroundUrl = cloudyDay;
           break;
         }
-        case weather.weather[0].main === 'Drizzle' &&
-          date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Drizzle' && isNight: {
           backgroundUrl = rainNight;
           break;
         }
@@ -87,7 +86,7 @@ function App() {
           backgroundUrl = drizzleDay;
           break;
         }
-        case weather.weather[0].main === 'Rain' && date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Rain' && isNight: {
           backgroundUrl = rainNight;
           break;
         }
@@ -95,7 +94,7 @@ function App() {
           backgroundUrl = rainDay;
           break;
         }
-        case weather.weather[0].main === 'Snow' && date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Snow' && isNight: {
           backgroundUrl = snowNight;
           break;
         }
@@ -103,8 +102,7 @@ function App() {
           backgroundUrl = snowDay;
           break;
         }
-        case weather.weather[0].main === 'Thunderstorm' &&
-          date > weather.sys.sunset: {
+        case weather.weather[0].main === 'Thunderstorm' && isNight: {
           backgroundUrl = thunderstormNight;
           break;
         }
