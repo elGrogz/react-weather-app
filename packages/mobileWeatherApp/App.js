@@ -7,6 +7,19 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+const defaultImage = require('./public/default.jpg');
+const clearDay = require('./public/clear-day.jpg');
+const clearNight = require('./public/clear-night.jpg');
+const cloudyDay = require('./public/cloudy-day.jpg');
+const cloudyNight = require('./public/cloudy-night.jpg');
+const drizzleDay = require('./public/drizzle-day.jpg');
+const rainDay = require('./public/rain-day.jpg');
+const rainNight = require('./public/rain-night.jpg');
+const snowDay = require('./public/snow-day.jpg');
+const snowNight = require('./public/snow-night.jpg');
+const thunderstormDay = require('./public/thunderstorm-day.jpg');
+const thunderstormNight = require('./public/thunderstorm-night.jpg');
+
 const api = {
   key: '8e8a5629885d66a0857172614fc0f5bd',
   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
@@ -15,11 +28,7 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
-  // const [backgroundImageUrl, setBackgroundImageUrl] = useState('');
-
-  // useEffect(() => {
-  //   console.log('query: ' + query);
-  // });
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState();
 
   const search = () => {
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
@@ -30,23 +39,7 @@ function App() {
       });
   };
 
-  // set when search is completed
-  const setBackground = () => {
-    const coldBackground = require('./public/cold-bg.jpeg');
-    const hotBackground = require('./public/warm-bg.jpeg');
-    const defaultImage = require('./public/default.jpg');
-    const clearDay = require('./public/clear-day.jpg');
-    const clearNight = require('./public/clear-night.jpg');
-    const cloudyDay = require('./public/cloudy-day.jpg');
-    const cloudyNight = require('./public/cloudy-night.jpg');
-    const drizzleDay = require('./public/drizzle-day.jpg');
-    const rainDay = require('./public/rain-day.jpg');
-    const rainNight = require('./public/rain-night.jpg');
-    const snowDay = require('./public/snow-day.jpg');
-    const snowNight = require('./public/snow-night.jpg');
-    const thunderstormDay = require('./public/thunderstorm-day.jpg');
-    const thunderstormNight = require('./public/thunderstorm-night.jpg');
-
+  useEffect(() => {
     let backgroundUrl = defaultImage;
 
     const date = Math.round(Date.now() / 1000);
@@ -118,8 +111,8 @@ function App() {
 
     console.log(backgroundUrl);
 
-    return backgroundUrl;
-  };
+    setBackgroundImageUrl(backgroundUrl);
+  }, [weather]);
 
   const dayBuilder = d => {
     let days = [
@@ -163,7 +156,7 @@ function App() {
   return (
     <View style={{flex: 1, fontFamily: 'Avenir'}}>
       <ImageBackground
-        source={setBackground()}
+        source={backgroundImageUrl}
         style={{
           flex: 1,
           alignItems: 'flex-start',
