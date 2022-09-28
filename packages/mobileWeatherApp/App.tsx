@@ -6,6 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import WeatherInfoContainer from './src/components/WeatherInfoContainer';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -26,10 +27,10 @@ const api = {
 };
 
 function App() {
-  const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({});
-  const [lastSearchedCity, setLastSearchedCity] = useState('');
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState();
+  const [query, setQuery] = useState<string>('');
+  const [weather, setWeather] = useState<object>({});
+  const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
 
   const search = () => {
     setLastSearchedCity(query);
@@ -210,6 +211,7 @@ function App() {
             Get current weather!
           </Text>
         </TouchableOpacity>
+        <WeatherInfoContainer />
         {typeof weather.cod === 'string' ? (
           <View
             style={{
