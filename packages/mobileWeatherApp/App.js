@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -28,14 +28,18 @@ const api = {
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [lastSearchedCity, setLastSearchedCity] = useState('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState();
 
   const search = () => {
+    setLastSearchedCity(query);
+
     fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
         setWeather(result);
         setQuery('');
+        console.log({weather});
       });
   };
 
@@ -206,6 +210,23 @@ function App() {
             Get current weather!
           </Text>
         </TouchableOpacity>
+        {typeof weather.cod === 'string' ? (
+          <View
+            style={{
+              flex: 1,
+              marginTop: '10%',
+              alignSelf: 'center',
+              alignItems: 'center',
+            }}>
+            <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
+              Could not find {lastSearchedCity}!
+            </Text>
+            <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
+              Try again
+            </Text>
+          </View>
+        ) : null}
+
         {typeof weather.main !== 'undefined' ? (
           <View
             style={{
