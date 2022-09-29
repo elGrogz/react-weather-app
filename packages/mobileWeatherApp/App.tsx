@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import WeatherInfoContainer from './src/components/WeatherInfoContainer';
-import WeatherResponse from './src/types/WeatherResponse';
-import ErrorResponse from './src/types/ErrorResponse';
+import {WeatherResponse} from './src/types/WeatherResponse';
+import {ErrorResponse} from './src/types/ErrorResponse';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -54,14 +54,11 @@ function App() {
     const date = Math.round(Date.now() / 1000);
     console.log('DATE: ' + date);
 
-    if (
-      typeof weather.weather !== 'undefined' &&
-      typeof weather.sys !== 'undefined'
-    ) {
+    if (weather as WeatherResponse) {
       const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
       console.log('isNight: ' + isNight);
       switch (true) {
-        case weather.weather[0].main === 'Clear' && isNight: {
+        case weather[0].main === 'Clear' && isNight: {
           console.log('DARK CLEAR');
           backgroundUrl = clearNight;
           break;
