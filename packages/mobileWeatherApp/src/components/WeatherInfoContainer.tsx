@@ -1,7 +1,8 @@
 import {Text, View} from 'react-native';
+import {WeatherResponse} from '../types/WeatherResponse';
 
-const WeatherInfoContainer = props => {
-  const dayBuilder = d => {
+const WeatherInfoContainer: React.FC<WeatherResponse> = props => {
+  const dayBuilder = (date: Date): string => {
     let days = [
       'Sunday',
       'Monday',
@@ -12,12 +13,12 @@ const WeatherInfoContainer = props => {
       'Saturday',
     ];
 
-    let day = days[d.getDay()];
+    let day = days[date.getDay()];
 
     return `${day}`;
   };
 
-  const dateBuilder = d => {
+  const dateBuilder = (d: Date): string => {
     let months = [
       'January',
       'February',

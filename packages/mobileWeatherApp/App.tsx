@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import WeatherInfoContainer from './src/components/WeatherInfoContainer';
+import WeatherResponse from './src/types/WeatherResponse';
+import ErrorResponse from './src/types/ErrorResponse';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -28,7 +30,9 @@ const api = {
 
 function App() {
   const [query, setQuery] = useState<string>('');
-  const [weather, setWeather] = useState<object>({});
+  const [weather, setWeather] = useState<WeatherResponse | ErrorResponse | {}>(
+    {},
+  );
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
 
