@@ -11,22 +11,23 @@ I'm using it as an opportunity to practice the following:
 - Testing (Detox, React test library)
 - Debugging on mobile
 - Typescript
+- React native styling
 
 ### Weather condition groups
 
-- [ ] Thunderstorm day
-- [ ] Thunderstorm night
-- [ ] Drizzle day
-- [ ] Drizzle night (use rain night?)
-- [ ] Rain day
-- [ ] Rain night
-- [ ] Snow day
-- [ ] Snow night
-- [ ] Atmosphere (kind of a misc group for dust, fog, tornado, etc. Just use default image to start with)
-- [ ] Clear day
-- [ ] Clear night
-- [ ] Clouds day
-- [ ] Clouds night
+- [x] Thunderstorm day
+- [x] Thunderstorm night
+- [x] Drizzle day
+- [x] Drizzle night (use rain night?)
+- [x] Rain day
+- [x] Rain night
+- [x] Snow day
+- [x] Snow night
+- [x] Atmosphere (kind of a misc group for dust, fog, tornado, etc. Just use default image to start with)
+- [x] Clear day
+- [x] Clear night
+- [x] Clouds day
+- [x] Clouds night
 
 ### Example OpenWeather API `/weather` response
 
