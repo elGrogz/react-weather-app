@@ -9,6 +9,7 @@ import {
 import WeatherInfoContainer from './src/components/WeatherInfoContainer';
 import {WeatherResponse} from './src/types/WeatherResponse';
 import {ErrorResponse} from './src/types/ErrorResponse';
+import CarouselContainer from './src/components/CarouselContainer';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -194,7 +195,8 @@ function App() {
         ) : null}
 
         {typeof weather.main !== 'undefined' ? (
-          <WeatherInfoContainer weather={weather} />
+          // <WeatherInfoContainer weather={weather} />
+          <CarouselContainer weather={weather} />
         ) : undefined}
       </ImageBackground>
     </View>
