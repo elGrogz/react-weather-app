@@ -1,7 +1,7 @@
 import {Text, View} from 'react-native';
 import {WeatherResponse} from '../types/WeatherResponse';
 
-const WeatherInfoContainer: React.FC<WeatherResponse> = props => {
+const WeatherInfoContainer: React.FC<any> = props => {
   const dayBuilder = (date: Date): string => {
     let days = [
       'Sunday',
@@ -46,7 +46,7 @@ const WeatherInfoContainer: React.FC<WeatherResponse> = props => {
       name="current-weather-pane"
       style={{
         flex: 1,
-        width: '100%',
+        maxWidth: '100%',
         marginTop: '20%',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
       }}>
