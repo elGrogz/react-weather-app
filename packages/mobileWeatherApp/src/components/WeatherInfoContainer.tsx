@@ -47,7 +47,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
       style={{
         flex: 1,
         maxWidth: '100%',
-        marginTop: '20%',
+        marginTop: '10%',
         backgroundColor: 'rgba(255, 255, 255, 0.1)',
       }}>
       <View style={{marginLeft: 5}}>
