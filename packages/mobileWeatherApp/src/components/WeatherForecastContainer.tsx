@@ -11,7 +11,13 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         paddingTop: '10%',
       }}>
       <View style={{marginLeft: 5}}>
-        <Text>Hello</Text>
+        <Text>Forecast 1</Text>
+        <Text>Forecast 2</Text>
+        <Text>Forecast 3</Text>
+        <Text>Forecast 4</Text>
+        <Text>Forecast 5</Text>
+        <Text>Forecast 6</Text>
+        <Text>Forecast 7</Text>
       </View>
     </View>
   );
