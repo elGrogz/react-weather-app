@@ -46,9 +46,9 @@ const WeatherInfoContainer: React.FC<any> = props => {
       name="current-weather-pane"
       style={{
         flex: 1,
-        maxWidth: '100%',
-        marginTop: '10%',
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        width: '100%',
+        marginTop: '2%',
+        paddingTop: '5%',
       }}>
       <View style={{marginLeft: 5}}>
         <View>
@@ -78,7 +78,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
         style={{
           flex: 1,
           flexDirection: 'row',
-          marginBottom: 50,
+          marginBottom: '10%',
           alignSelf: 'center',
           position: 'absolute',
           bottom: 1,

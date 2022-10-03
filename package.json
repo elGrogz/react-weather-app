@@ -6,15 +6,5 @@
   "repository": "git@github.com:elGrogz/react-weather-app.git",
   "author": "Gregor Gilchrist <gregorgilchrist@gmail.com>",
   "license": "MIT",
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/react-native",
-      "**/react-native/**",
-      "react-native-safe-area-context"
-    ]
-  }
+  "private": true
 }

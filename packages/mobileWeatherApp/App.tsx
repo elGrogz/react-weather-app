@@ -134,70 +134,77 @@ function App() {
         }}>
         <View
           style={{
-            alignSelf: 'center',
-            padding: 10,
-            marginTop: '20%',
-            marginBottom: 10,
             width:
-              '80%' /* how much width the element takes up within its parent element */,
-            backgroundColor: 'rgba(255,255,255,0.5)',
-            borderColor: 'rgba(255,255,255,0.8)',
-            borderWidth: 2,
-            borderRadius: 15,
+              '100%' /* how much width the element takes up within its parent element */,
+            backgroundColor: 'rgba(255,255,255,0.2)',
+            height: '100%',
           }}>
-          <TextInput
-            type="text"
-            className="search-bar"
-            placeholder="Search location..."
-            onChangeText={text => setQuery(text)}
-            value={query}
-            style={{
-              fontSize: 20,
-              color: 'rgba(0,0,0,0.5)',
-              fontFamily: 'Avenir',
-            }}
-          />
-        </View>
-        <TouchableOpacity
-          style={{
-            padding: 10,
-            alignSelf: 'center',
-            backgroundColor: 'rgba(255,255,255,0.5)',
-            borderColor: 'rgba(255,255,255,0.8)',
-            borderWidth: 2,
-            borderRadius: 15,
-          }}
-          onPress={search}>
-          <Text
-            style={{
-              fontSize: 20,
-              color: 'rgba(0,0,0,0.5)',
-              fontFamily: 'Avenir',
-            }}>
-            Get current weather!
-          </Text>
-        </TouchableOpacity>
-        {typeof weather.cod === 'string' ? (
           <View
             style={{
-              flex: 1,
-              marginTop: '10%',
               alignSelf: 'center',
-              alignItems: 'center',
+              width: '80%',
+              padding: 10,
+              marginTop: '20%',
+              marginBottom: 10,
+              backgroundColor: 'rgba(255,255,255,0.5)',
+              borderColor: 'rgba(255,255,255,0.8)',
+              borderWidth: 2,
+              borderRadius: 15,
             }}>
-            <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
-              Could not find {lastSearchedCity}!
-            </Text>
-            <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
-              Try again
-            </Text>
+            <TextInput
+              type="text"
+              className="search-bar"
+              placeholder="Search location..."
+              onChangeText={text => setQuery(text)}
+              value={query}
+              style={{
+                fontSize: 20,
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'Avenir',
+              }}
+            />
           </View>
-        ) : null}
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              alignSelf: 'center',
+              backgroundColor: 'rgba(255,255,255,0.5)',
+              borderColor: 'rgba(255,255,255,0.8)',
+              borderWidth: 2,
+              borderRadius: 15,
+            }}
+            onPress={search}>
+            <Text
+              style={{
+                fontSize: 20,
+                color: 'rgba(0,0,0,0.5)',
+                fontFamily: 'Avenir',
+              }}>
+              Get current weather!
+            </Text>
+          </TouchableOpacity>
+          {typeof weather.cod === 'string' ? (
+            <View
+              style={{
+                flex: 1,
+                marginTop: '10%',
+                alignSelf: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
+                Could not find {lastSearchedCity}!
+              </Text>
+              <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
+                Try again
+              </Text>
+            </View>
+          ) : null}
 
-        {typeof weather.main !== 'undefined' ? (
-          // <WeatherInfoContainer weather={weather} />
-          <CarouselContainer weather={weather} />
-        ) : undefined}
+          {typeof weather.main !== 'undefined' ? (
+            // <WeatherInfoContainer weather={weather} />
+            <CarouselContainer weather={weather} />
+          ) : undefined}
+        </View>
       </ImageBackground>
     </View>
   );

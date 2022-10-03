@@ -37,31 +37,28 @@ const CarouselContainer = props => {
   };
 
   return (
-    <View>
-      <ScrollView
-        horizontal={true}
-        onContentSizeChange={(w, h) => init(w)}
-        contentContainerStyle={{width: `${100 * intervals}%`}}
-        showsHorizontalScrollIndicator={false}
-        scrollEventThrottle={200}
-        decelerationRate="fast"
-        onScroll={data => {
-          // console.log({data});
-          setWidth(data.nativeEvent.contentSize.width);
-          setInterval(getInterval(data.nativeEvent.contentOffset.x));
-        }}
-        style={
-          {
-            // display: 'flex',
-            // flexDirection: 'row',
-            // overflow: 'hidden',
-          }
-        }
-        pagingEnabled>
-        <WeatherInfoContainer weather={props.weather} />
-        <WeatherForecastContainer />
-      </ScrollView>
-    </View>
+    <ScrollView
+      horizontal={true}
+      onContentSizeChange={(w, h) => init(w)}
+      contentContainerStyle={{width: `${100 * intervals}%`}}
+      showsHorizontalScrollIndicator={false}
+      scrollEventThrottle={200}
+      decelerationRate="fast"
+      onScroll={data => {
+        // console.log({data});
+        setWidth(data.nativeEvent.contentSize.width);
+        setInterval(getInterval(data.nativeEvent.contentOffset.x));
+      }}
+      style={{
+        maxHeight: '100%',
+        // display: 'flex',
+        // flexDirection: 'row',
+        // overflow: 'hidden',
+      }}
+      pagingEnabled>
+      <WeatherInfoContainer weather={props.weather} />
+      <WeatherForecastContainer />
+    </ScrollView>
   );
 };
 
