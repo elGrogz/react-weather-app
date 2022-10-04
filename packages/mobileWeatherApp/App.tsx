@@ -34,6 +34,9 @@ function App() {
   const [weather, setWeather] = useState<WeatherResponse | ErrorResponse | {}>(
     {},
   );
+  const [lat, setLat] = useState('');
+  const [lon, setLon] = useState('');
+  const [forecast, setForecast] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
 
@@ -47,7 +50,22 @@ function App() {
         setQuery('');
         console.log({weather});
       });
+
+    setLat(weather.coord.lat);
+    setLonn(weather.coord.lon);
+    console.log({lat});
+    console.log({lon});
   };
+
+  useEffect(() => {
+    fetch(`${api.baseApiUrl}forecast?lat=${lat}&lon=${lon}&appid=${api.key}`)
+      .then(response => response.json())
+      .then(result => {
+        setForecast(result);
+        setQuery('');
+        console.log({forecast});
+      });
+  }, [lat, long]);
 
   useEffect(() => {
     let backgroundUrl = defaultImage;
@@ -202,7 +220,7 @@ function App() {
 
           {typeof weather.main !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
-            <CarouselContainer weather={weather} />
+            <CarouselContainer weather={[weather, forecast]} />
           ) : undefined}
         </View>
       </ImageBackground>
