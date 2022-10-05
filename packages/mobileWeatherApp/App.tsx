@@ -40,48 +40,51 @@ function App() {
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
 
-  const search = () => {
+  const search = async () => {
     setLastSearchedCity(query);
 
-    fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
+    await fetch(
+      `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
+    )
       .then(response => response.json())
       .then(result => {
         setWeather(result);
         setQuery('');
-        console.log({weather});
+        console.log('weather!!!!: ' + JSON.stringify(result));
+        setLat(result.coord.lat);
+        setLon(result.coord.lon);
       });
-
-    setLat(weather.coord.lat);
-    setLonn(weather.coord.lon);
-    console.log({lat});
-    console.log({lon});
   };
 
   useEffect(() => {
     fetch(`${api.baseApiUrl}forecast?lat=${lat}&lon=${lon}&appid=${api.key}`)
       .then(response => response.json())
       .then(result => {
+        console.log('forecast!!!!: ' + JSON.stringify(result));
         setForecast(result);
         setQuery('');
-        console.log({forecast});
       });
-  }, [lat, long]);
+  }, [lat, lon]);
+
+  // useEffect(() => {
+  //   console.log('forecast!!!!: ' + JSON.stringify(forecast));
+  // });
 
   useEffect(() => {
     let backgroundUrl = defaultImage;
 
     const date = Math.round(Date.now() / 1000);
-    console.log('DATE: ' + date);
+    // console.log('DATE: ' + date);
 
     if (
       typeof weather.weather !== 'undefined' &&
       typeof weather.sys !== 'undefined'
     ) {
       const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
-      console.log('isNight: ' + isNight);
+      // console.log('isNight: ' + isNight);
       switch (true) {
         case weather.weather[0].main === 'Clear' && isNight: {
-          console.log('DARK CLEAR');
+          // console.log('DARK CLEAR');
           backgroundUrl = clearNight;
           break;
         }
@@ -90,7 +93,7 @@ function App() {
           break;
         }
         case weather.weather[0].main === 'Clouds' && isNight: {
-          console.log('DARK CLEAR');
+          // console.log('DARK CLEAR');
           backgroundUrl = cloudyNight;
           break;
         }
@@ -137,7 +140,7 @@ function App() {
       }
     }
 
-    console.log(backgroundUrl);
+    // console.log(backgroundUrl);
 
     setBackgroundImageUrl(backgroundUrl);
   }, [weather]);
@@ -218,10 +221,10 @@ function App() {
             </View>
           ) : null}
 
-          {typeof weather.main !== 'undefined' ? (
+          {/* {typeof weather.main !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
             <CarouselContainer weather={[weather, forecast]} />
-          ) : undefined}
+          ) : undefined} */}
         </View>
       </ImageBackground>
     </View>

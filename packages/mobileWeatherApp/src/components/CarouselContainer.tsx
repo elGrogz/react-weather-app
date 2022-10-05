@@ -9,7 +9,7 @@ const CarouselContainer = props => {
   const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {
-    console.log('interval: ' + interval);
+    // console.log('interval: ' + interval);
   }, [interval]);
 
   const init = (width: number) => {
