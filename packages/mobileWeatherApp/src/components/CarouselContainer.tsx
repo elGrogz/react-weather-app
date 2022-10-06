@@ -57,7 +57,7 @@ const CarouselContainer = props => {
       }}
       pagingEnabled>
       <WeatherInfoContainer weather={props.weather} />
-      <WeatherForecastContainer />
+      <WeatherForecastContainer forecast={props.forecast} />
     </ScrollView>
   );
 };

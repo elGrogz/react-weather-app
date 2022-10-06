@@ -55,8 +55,9 @@ function App() {
     fetch(`${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
-        console.log('forecast!!!!: ' + JSON.stringify(result));
-        setForecast(result);
+        if (typeof result.list !== undefined) {
+          setForecast(result.list.slice(0, 7));
+        }
       });
 
     setQuery('');
@@ -229,7 +230,8 @@ function App() {
             </View>
           ) : null}
 
-          {typeof weather.main !== 'undefined' ? (
+          {typeof weather.main !== 'undefined' &&
+          typeof forecast !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
             <CarouselContainer weather={weather} forecast={forecast} />
           ) : undefined}

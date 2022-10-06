@@ -1,17 +1,10 @@
 import {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {ProgressViewIOSComponent, Text, View} from 'react-native';
 
 const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
-  const [forecastList, setForecastList] = useState([]);
+  // const [forecastList, setForecastList] = useState([]);
 
-  useEffect(() => {
-    if (props.list) {
-      // console.log(forecastList);
-      setForecastList(props.list.slice(0, 7));
-    }
-
-    // console.log(forecastList);
-  });
+  // console.log(forecastList);
 
   return (
     <View
@@ -23,7 +16,7 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         paddingTop: '10%',
       }}>
       <View style={{marginLeft: 5}}>
-        <Text />
+        <Text>{props.forecast[0].main.temp}</Text>
         <Text>Forecast 2</Text>
         <Text>Forecast 3</Text>
         <Text>Forecast 4</Text>
