@@ -1,6 +1,18 @@
+import {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 
 const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
+  const [forecastList, setForecastList] = useState([]);
+
+  useEffect(() => {
+    if (props.list) {
+      // console.log(forecastList);
+      setForecastList(props.list.slice(0, 7));
+    }
+
+    // console.log(forecastList);
+  });
+
   return (
     <View
       name="weather-forecase-pane"
@@ -11,7 +23,7 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         paddingTop: '10%',
       }}>
       <View style={{marginLeft: 5}}>
-        <Text>Forecast 1</Text>
+        <Text />
         <Text>Forecast 2</Text>
         <Text>Forecast 3</Text>
         <Text>Forecast 4</Text>

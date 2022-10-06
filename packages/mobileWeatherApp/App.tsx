@@ -34,8 +34,8 @@ function App() {
   const [weather, setWeather] = useState<WeatherResponse | ErrorResponse | {}>(
     {},
   );
-  const [lat, setLat] = useState('');
-  const [lon, setLon] = useState('');
+  // const [lat, setLat] = useState('');
+  // const [lon, setLon] = useState('');
   const [forecast, setForecast] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
@@ -43,28 +43,36 @@ function App() {
   const search = async () => {
     setLastSearchedCity(query);
 
-    await fetch(
-      `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
-    )
+    fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
         setWeather(result);
-        setQuery('');
-        console.log('weather!!!!: ' + JSON.stringify(result));
-        setLat(result.coord.lat);
-        setLon(result.coord.lon);
+        // console.log('weather!!!!: ' + JSON.stringify(result));
+        // setLat(result.coord.lat);
+        // setLon(result.coord.lon);
       });
-  };
 
-  useEffect(() => {
-    fetch(`${api.baseApiUrl}forecast?lat=${lat}&lon=${lon}&appid=${api.key}`)
+    fetch(`${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`)
       .then(response => response.json())
       .then(result => {
         console.log('forecast!!!!: ' + JSON.stringify(result));
         setForecast(result);
-        setQuery('');
       });
-  }, [lat, lon]);
+
+    setQuery('');
+  };
+
+  // useEffect(() => {
+  //   fetch(
+  //     `${api.baseApiUrl}forecast?lat=${lat}&lon=${lon}&appid=${api.key}&units=metric`,
+  //   )
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       console.log('forecast!!!!: ' + JSON.stringify(result));
+  //       setForecast(result);
+  //       setQuery('');
+  //     });
+  // }, [lat, lon]);
 
   // useEffect(() => {
   //   console.log('forecast!!!!: ' + JSON.stringify(forecast));
@@ -221,10 +229,10 @@ function App() {
             </View>
           ) : null}
 
-          {/* {typeof weather.main !== 'undefined' ? (
+          {typeof weather.main !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
-            <CarouselContainer weather={[weather, forecast]} />
-          ) : undefined} */}
+            <CarouselContainer weather={weather} forecast={forecast} />
+          ) : undefined}
         </View>
       </ImageBackground>
     </View>
