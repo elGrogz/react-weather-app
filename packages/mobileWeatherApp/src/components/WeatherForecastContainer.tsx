@@ -17,12 +17,12 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
       }}>
       <View style={{marginLeft: 5}}>
         <Text>{props.forecast[0].main.temp}</Text>
-        <Text>Forecast 2</Text>
-        <Text>Forecast 3</Text>
-        <Text>Forecast 4</Text>
-        <Text>Forecast 5</Text>
-        <Text>Forecast 6</Text>
-        <Text>Forecast 7</Text>
+        <Text>{props.forecast[1].main.temp}</Text>
+        <Text>{props.forecast[2].main.temp}</Text>
+        <Text>{props.forecast[3].main.temp}</Text>
+        <Text>{props.forecast[4].main.temp}</Text>
+        <Text>{props.forecast[5].main.temp}</Text>
+        <Text>{props.forecast[6].main.temp}</Text>
       </View>
     </View>
   );

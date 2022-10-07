@@ -231,7 +231,7 @@ function App() {
           ) : null}
 
           {typeof weather.main !== 'undefined' &&
-          typeof forecast !== 'undefined' ? (
+          typeof forecast.main !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
             <CarouselContainer weather={weather} forecast={forecast} />
           ) : undefined}
