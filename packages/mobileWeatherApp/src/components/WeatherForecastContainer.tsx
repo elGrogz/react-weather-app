@@ -4,9 +4,9 @@ import {ProgressViewIOSComponent, Text, View} from 'react-native';
 const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
   // const [forecastList, setForecastList] = useState([]);
 
-  // console.log(forecastList);
+  // console.log(props.forecasts);
 
-  const forecasts = props.forecasts;
+  // const forecasts = props.forecasts;
 
   const ForecastItem = forecast => {
     return (
@@ -31,16 +31,16 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      {forecasts.map((forecast, index) => {
+      {/* {props.forecasts.map((forecast, index) => {
         <ForecastItem
           forecast={forecast}
           key={index}
           style={{marginLeft: 5}}
         />;
-      })}
-      {/* <View style={{marginLeft: 5}}>
-        <Text>{props.forecast[0].main.temp}</Text>
-        <Text>{props.forecast[1].main.temp}</Text>
+      })} */}
+      {/* {/* <View style={{marginLeft: 5}}> */}
+      <Text>{props.forecast[0].main.temp}</Text>
+      {/* <Text>{props.forecast[1].main.temp}</Text>
         <Text>{props.forecast[2].main.temp}</Text>
         <Text>{props.forecast[3].main.temp}</Text>
         <Text>{props.forecast[4].main.temp}</Text>

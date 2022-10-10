@@ -6,7 +6,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import WeatherInfoContainer from './src/components/WeatherInfoContainer';
+// import WeatherInfoContainer from './src/components/WeatherInfoContainer';
 import {WeatherResponse} from './src/types/WeatherResponse';
 import {ErrorResponse} from './src/types/ErrorResponse';
 import CarouselContainer from './src/components/CarouselContainer';
@@ -36,7 +36,7 @@ function App() {
   );
   // const [lat, setLat] = useState('');
   // const [lon, setLon] = useState('');
-  const [forecast, setForecast] = useState({});
+  const [forecasts, setForecasts] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string>();
 
@@ -56,7 +56,7 @@ function App() {
       .then(response => response.json())
       .then(result => {
         if (typeof result.list !== undefined) {
-          setForecast(result.list.slice(0, 7));
+          setForecasts(result.list.slice(0, 7));
         }
       });
 
@@ -231,9 +231,9 @@ function App() {
           ) : null}
 
           {typeof weather.main !== 'undefined' &&
-          typeof forecast.main !== 'undefined' ? (
+          typeof forecasts !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
-            <CarouselContainer weather={weather} forecasts={forecast} />
+            <CarouselContainer weather={weather} forecasts={forecasts} />
           ) : undefined}
         </View>
       </ImageBackground>
