@@ -233,7 +233,7 @@ function App() {
           {typeof weather.main !== 'undefined' &&
           typeof forecast.main !== 'undefined' ? (
             // <WeatherInfoContainer weather={weather} />
-            <CarouselContainer weather={weather} forecast={forecast} />
+            <CarouselContainer weather={weather} forecasts={forecast} />
           ) : undefined}
         </View>
       </ImageBackground>

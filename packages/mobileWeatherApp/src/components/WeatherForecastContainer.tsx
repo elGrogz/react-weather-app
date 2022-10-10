@@ -6,6 +6,22 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
 
   // console.log(forecastList);
 
+  const forecasts = props.forecasts;
+
+  const ForecastItem = forecast => {
+    return (
+      <View>
+        <Text>{forecast.dt}</Text>
+        <Text>{forecast.main.temp}</Text>
+        <Text>{forecast.main.weather.main}</Text>
+      </View>
+    );
+  };
+
+  // const forecastItems = forecasts.map(forecast => {
+  //   <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
+  // });
+
   return (
     <View
       name="weather-forecase-pane"
@@ -15,7 +31,14 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      <View style={{marginLeft: 5}}>
+      {forecasts.map((forecast, index) => {
+        <ForecastItem
+          forecast={forecast}
+          key={index}
+          style={{marginLeft: 5}}
+        />;
+      })}
+      {/* <View style={{marginLeft: 5}}>
         <Text>{props.forecast[0].main.temp}</Text>
         <Text>{props.forecast[1].main.temp}</Text>
         <Text>{props.forecast[2].main.temp}</Text>
@@ -23,7 +46,7 @@ const WeatherForecastContainer: React.FC<WeatherResponse> = props => {
         <Text>{props.forecast[4].main.temp}</Text>
         <Text>{props.forecast[5].main.temp}</Text>
         <Text>{props.forecast[6].main.temp}</Text>
-      </View>
+      </View> */}
     </View>
   );
 };
