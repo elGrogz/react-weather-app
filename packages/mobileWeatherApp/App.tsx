@@ -56,7 +56,7 @@ function App() {
       .then(response => response.json())
       .then(result => {
         if (typeof result.list !== undefined) {
-          setForecasts(result.list.slice(0, 7));
+          setForecasts(result);
         }
       });
 
