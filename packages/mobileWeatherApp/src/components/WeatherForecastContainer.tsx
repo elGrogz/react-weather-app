@@ -9,11 +9,11 @@ const WeatherForecastContainer: React.FC<any> = props => {
   // const forecasts = props.forecasts.list.slice(0, 7);
 
   useEffect(() => {
-    console.log(props.forecasts.list.slice(0, 7));
+    console.log(props.forecasts.list[0].dt);
     // if (typeof forecastList !== 'undefined') {
-    const forecasts = props.forecasts.list.slice(0, 7);
-    setForecastList(forecasts);
-    console.log(forecastList);
+    // const forecasts = props.forecasts.list.slice(0, 7);
+    // setForecastList(forecasts);
+    // console.log(forecastList);
     // }
   }, [props, forecastList]);
 
@@ -39,14 +39,15 @@ const WeatherForecastContainer: React.FC<any> = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      {typeof forecastList !== 'undefined'
-        ? forecastList.map((forecast, index) => {
+      {typeof props.forecasts !== 'undefined'
+        ? props.forecasts.list.map((forecast, index) => {
             // <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
+            console.log('HELLO');
             <Text>Hello</Text>;
           })
         : null}
       {/* {/* <View style={{marginLeft: 5}}> */}
-      {/* <Text>{props}</Text> */}
+      <Text>{props.forecasts.list[0].dt}</Text>
       {/* <Text>{props.forecast[1].main.temp}</Text>
         <Text>{props.forecast[2].main.temp}</Text>
         <Text>{props.forecast[3].main.temp}</Text>
