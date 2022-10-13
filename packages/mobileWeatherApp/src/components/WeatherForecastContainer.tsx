@@ -1,21 +1,23 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ProgressViewIOSComponent, Text, View} from 'react-native';
 
-const WeatherForecastContainer: React.FC<any> = props => {
+const WeatherForecastContainer = props => {
   const [forecastList, setForecastList] = useState();
 
   // console.log(props.forecasts);
 
   // const forecasts = props.forecasts.list.slice(0, 7);
 
-  useEffect(() => {
-    console.log(props.forecasts.list[0].dt);
-    // if (typeof forecastList !== 'undefined') {
-    // const forecasts = props.forecasts.list.slice(0, 7);
-    // setForecastList(forecasts);
-    // console.log(forecastList);
-    // }
-  }, [props, forecastList]);
+  // useEffect(() => {
+  // console.log(props.forecasts.list[0].dt);
+  // if (typeof forecastList !== 'undefined') {
+  // const forecasts = props.forecasts.list.slice(0, 7);
+  // setForecastList(forecasts);
+  // console.log(forecastList);
+  // }
+  // }, [props, forecastList]);
+
+  const randomList = ['apple', 'banana', 'orange'];
 
   const ForecastItem = forecast => {
     return (
@@ -39,22 +41,26 @@ const WeatherForecastContainer: React.FC<any> = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      {typeof props.forecasts !== 'undefined'
-        ? props.forecasts.list.map((forecast, index) => {
+      {/* {typeof props.forecasts !== 'undefined' */}
+        randomList.map((forecast, index) => {
             // <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
             console.log('HELLO');
-            <Text>Hello</Text>;
+            <Text>
+              Hello {forecast} {index}
+            </Text>;
           })
-        : null}
-      {/* {/* <View style={{marginLeft: 5}}> */}
-      <Text>{props.forecasts.list[0].dt}</Text>
-      {/* <Text>{props.forecast[1].main.temp}</Text>
-        <Text>{props.forecast[2].main.temp}</Text>
-        <Text>{props.forecast[3].main.temp}</Text>
-        <Text>{props.forecast[4].main.temp}</Text>
-        <Text>{props.forecast[5].main.temp}</Text>
-        <Text>{props.forecast[6].main.temp}</Text>
+        {/* : null} */}
+      {/* {typeof props.forecasts !== 'undefined' ? ( */}
+      {/* <View style={{marginLeft: 5}}>
+        <Text>{props.forecasts.list[0].dt}</Text>
+        <Text>{props.forecasts.list[1].main.temp}</Text>
+        <Text>{props.forecasts.list[2].main.temp}</Text>
+        <Text>{props.forecasts.list[3].main.temp}</Text>
+        <Text>{props.forecasts.list[4].main.temp}</Text>
+        <Text>{props.forecasts.list[5].main.temp}</Text>
+        <Text>{props.forecasts.list[6].main.temp}</Text>
       </View> */}
+      {/* ) : null} */}
     </View>
   );
 };
