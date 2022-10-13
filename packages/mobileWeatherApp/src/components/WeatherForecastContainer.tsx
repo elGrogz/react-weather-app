@@ -17,7 +17,7 @@ const WeatherForecastContainer = props => {
   // }
   // }, [props, forecastList]);
 
-  const randomList = ['apple', 'banana', 'orange'];
+  const randomList: string[] = ['apple', 'banana', 'orange'];
 
   const ForecastItem = forecast => {
     return (
@@ -41,15 +41,21 @@ const WeatherForecastContainer = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      {/* {typeof props.forecasts !== 'undefined' */}
-        randomList.map((forecast, index) => {
-            // <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
-            console.log('HELLO');
-            <Text>
-              Hello {forecast} {index}
-            </Text>;
-          })
-        {/* : null} */}
+      {typeof props.forecasts.list !== 'undefined'
+        ? props.forecasts.list.map(
+            (forecastItem, index) => (
+              // <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
+              console.log(forecastItem), (<Text>Hello {index}</Text>)
+              // <ForecastItem forecast={forecastItem} />
+            ),
+          )
+        : null}
+      {/* {randomList.map(word => (
+        <Text>{word}</Text>
+      ))} */}
+      {/* {randomList.map(number => (
+        <ListItem key={number.toString()} value={number} />
+      ))} */}
       {/* {typeof props.forecasts !== 'undefined' ? ( */}
       {/* <View style={{marginLeft: 5}}>
         <Text>{props.forecasts.list[0].dt}</Text>
