@@ -19,12 +19,13 @@ const WeatherForecastContainer = props => {
 
   const randomList: string[] = ['apple', 'banana', 'orange'];
 
-  const ForecastItem = forecast => {
+  const ForecastItem = forecastProps => {
+    console.log(forecastProps);
     return (
       <View>
-        <Text>{forecast.dt}</Text>
-        <Text>{forecast.main.temp}</Text>
-        <Text>{forecast.main.weather.main}</Text>
+        {/* <Text>{forecastProps.dt}</Text> */}
+        {/* <Text>{forecastProps.main.temp}</Text> */}
+        {/* <Text>{forecastProps.main.weather.main}</Text> */}
       </View>
     );
   };
@@ -41,7 +42,7 @@ const WeatherForecastContainer = props => {
         marginTop: '2%',
         paddingTop: '10%',
       }}>
-      {typeof props.forecasts.list !== 'undefined'
+      {/* {typeof props.forecasts.list !== 'undefined'
         ? props.forecasts.list.map(
             (forecastItem, index) => (
               // <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
@@ -49,24 +50,25 @@ const WeatherForecastContainer = props => {
               // <ForecastItem forecast={forecastItem} />
             ),
           )
-        : null}
+        : null} */}
       {/* {randomList.map(word => (
         <Text>{word}</Text>
       ))} */}
       {/* {randomList.map(number => (
         <ListItem key={number.toString()} value={number} />
       ))} */}
-      {/* {typeof props.forecasts !== 'undefined' ? ( */}
-      {/* <View style={{marginLeft: 5}}>
-        <Text>{props.forecasts.list[0].dt}</Text>
-        <Text>{props.forecasts.list[1].main.temp}</Text>
-        <Text>{props.forecasts.list[2].main.temp}</Text>
-        <Text>{props.forecasts.list[3].main.temp}</Text>
-        <Text>{props.forecasts.list[4].main.temp}</Text>
-        <Text>{props.forecasts.list[5].main.temp}</Text>
-        <Text>{props.forecasts.list[6].main.temp}</Text>
-      </View> */}
-      {/* ) : null} */}
+      {typeof props.forecasts.list !== 'undefined' ? (
+        <View style={{marginLeft: 5}}>
+          <Text>{props.forecasts.list[0].dt}</Text>
+          <Text>{props.forecasts.list[1].main.temp}</Text>
+          <Text>{props.forecasts.list[2].main.temp}</Text>
+          <Text>{props.forecasts.list[3].main.temp}</Text>
+          <Text>{props.forecasts.list[4].main.temp}</Text>
+          <Text>{props.forecasts.list[5].main.temp}</Text>
+          <Text>{props.forecasts.list[6].main.temp}</Text>\
+          <ForecastItem forecastProps={props.forecasts.list[1]} />
+        </View>
+      ) : null}
     </View>
   );
 };

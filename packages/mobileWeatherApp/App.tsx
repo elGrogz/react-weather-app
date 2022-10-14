@@ -56,6 +56,7 @@ function App() {
       .then(response => response.json())
       .then(result => {
         if (typeof result.list !== undefined) {
+          console.log(result)
           setForecasts(result);
         }
       });
