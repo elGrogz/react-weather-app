@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 
 const WeatherForecastContainer = props => {
-  console.log(props.forecasts.list[0].main.temp);
+  console.log(props.forecasts.list[0]);
 
   // const forecasts = props.forecasts.list.slice(0, 7);
 
@@ -16,12 +16,12 @@ const WeatherForecastContainer = props => {
   // }, [props, forecastList]);
 
   const ForecastItem = forecastProps => {
-    console.log(forecastProps);
+    console.log(forecastProps.forecastProps.dt);
     return (
       <View>
-        {/* <Text>{forecastProps.dt}</Text> */}
-        {/* <Text>{forecastProps.main.temp}</Text> */}
-        {/* <Text>{forecastProps.main.weather.main}</Text> */}
+        <Text>{forecastProps.forecastProps.dt}</Text>
+        <Text>{forecastProps.forecastProps.main.temp}</Text>
+        <Text>{forecastProps.forecastProps.main.weather[0].main}</Text>
       </View>
     );
   };
@@ -40,14 +40,14 @@ const WeatherForecastContainer = props => {
       }}>
       {props.forecasts.list !== 'undefined' ? (
         <View style={{marginLeft: 5}}>
-          <Text>{props.forecasts.list[0].dt}</Text>
+          {/* <Text>{props.forecasts.list[0].dt}</Text> */}
           {/* <Text>{props.forecasts.list[1].main.temp}</Text> */}
           {/* <Text>{props.forecasts.list[2].main.temp}</Text>
           <Text>{props.forecasts.list[3].main.temp}</Text>
           <Text>{props.forecasts.list[4].main.temp}</Text>
           <Text>{props.forecasts.list[5].main.temp}</Text>
           <Text>{props.forecasts.list[6].main.temp}</Text>\ */}
-          {/* <ForecastItem forecastProps={props.forecasts.list[1]} /> */}
+          <ForecastItem forecastProps={props.forecasts.list[0]} />
         </View>
       ) : null}
     </View>

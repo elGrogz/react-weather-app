@@ -11,6 +11,35 @@ const snowNight = require('../../public/snow-night.jpg');
 const thunderstormDay = require('../../public/thunderstorm-day.jpg');
 const thunderstormNight = require('../../public/thunderstorm-night.jpg');
 
+const api = {
+  key: '8e8a5629885d66a0857172614fc0f5bd',
+  baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
+};
+
+export const getWeatherData = query => {
+  return (
+    Promise.all([
+      fetch(
+        `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
+      ),
+      fetch(
+        `${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`,
+      ),
+    ])
+      .then(responses =>
+        Promise.all(
+          responses.map(res => {
+            return res.json();
+          }),
+        ),
+      )
+      // .then(data => {
+      //   return data;
+      // })
+      .catch()
+  );
+};
+
 export const updateBackgroundUrl = weather => {
   let backgroundUrl;
 

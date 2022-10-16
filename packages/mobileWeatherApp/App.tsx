@@ -10,12 +10,12 @@ import {
 import {WeatherResponse} from './src/types/WeatherResponse';
 import {ErrorResponse} from './src/types/ErrorResponse';
 import CarouselContainer from './src/components/CarouselContainer';
-import {updateBackgroundUrl, defaultImage} from './src/utils/weatherUtils';
+import {updateBackgroundUrl, getWeatherData, defaultImage} from './src/utils/weatherUtils';
 
-const api = {
-  key: '8e8a5629885d66a0857172614fc0f5bd',
-  baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
-};
+// const api = {
+//   key: '8e8a5629885d66a0857172614fc0f5bd',
+//   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
+// };
 
 function App() {
   const [query, setQuery] = useState<string>('');
@@ -27,29 +27,42 @@ function App() {
   );
 
   const search = async () => {
+    console.log("ONE");
     setLastSearchedCity(query);
+    console.log("TWO");
+    getWeatherData(query).then(data => {
+      // console.log(data);
+      setWeather(data[0]);
+      setForecasts(data[1]);
+      // console.log('POST WEATHER: ', weather);
+      // console.log('POST FORECAST: ', forecasts);
+    });
+    console.log("THREE");
 
-    fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
-      .then(response => response.json())
-      .then(result => {
-        // console.log('PRE WEATHER: ', result);
-        setWeather(result);
-        // console.log('POST WEATHER: ', weather);
-      });
+    // fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     // console.log('PRE WEATHER: ', result);
+    //     setWeather(result);
+    //     // console.log('POST WEATHER: ', weather);
+    //   });
 
-    fetch(`${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`)
-      .then(response => response.json())
-      .then(result => {
-        if (typeof result.list !== undefined) {
-          // console.log('PRE FORECAST: ', result);
-          setForecasts(result);
-          // console.log('POST FORECAST: ', forecasts);
-        }
-      });
+    // fetch(`${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`)
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (typeof result.list !== undefined) {
+    //       // console.log('PRE FORECAST: ', result);
+    //       setForecasts(result);
+    //       // console.log('POST FORECAST: ', forecasts);
+    //     }
+    //   });
 
     const backgroundUrl = updateBackgroundUrl(weather);
+    console.log("FOUR");
     setBackgroundImageUrl(backgroundUrl);
+    console.log("FIVE");
     setQuery('');
+    console.log("SIX");
   };
 
   return (
