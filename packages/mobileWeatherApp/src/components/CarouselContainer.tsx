@@ -45,15 +45,11 @@ const CarouselContainer = props => {
       scrollEventThrottle={200}
       decelerationRate="fast"
       onScroll={data => {
-        // console.log({data});
         setWidth(data.nativeEvent.contentSize.width);
         setInterval(getInterval(data.nativeEvent.contentOffset.x));
       }}
       style={{
         maxHeight: '100%',
-        // display: 'flex',
-        // flexDirection: 'row',
-        // overflow: 'hidden',
       }}
       pagingEnabled>
       <WeatherInfoContainer weather={props.weather} />
