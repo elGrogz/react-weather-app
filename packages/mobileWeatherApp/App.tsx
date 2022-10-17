@@ -6,10 +6,6 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-// import WeatherInfoContainer from './src/components/WeatherInfoContainer';
-import {WeatherResponse} from './src/types/WeatherResponse';
-import {ErrorResponse} from './src/types/ErrorResponse';
-import {ForecastResponse} from './src/types/ForecastResponse';
 import CarouselContainer from './src/components/CarouselContainer';
 import {
   updateBackgroundUrl,
@@ -40,8 +36,10 @@ function App() {
 
     console.log('APP FIVE');
     const backgroundUrl = updateBackgroundUrl(weather);
+    console.log('BACKGROUND URL: ', backgroundUrl);
     console.log('APP SIX');
-    setBackgroundImageUrl(backgroundUrl);
+    setBackgroundImageUrl(updateBackgroundUrl(weather));
+    console.log('BACKGROUNDIMAGE URL: ', backgroundImageUrl);
     console.log('APP SEVEN');
     setQuery('');
     console.log('APP EIGHT');
@@ -105,7 +103,7 @@ function App() {
               Get current weather!
             </Text>
           </TouchableOpacity>
-          {typeof weather.cod === 'string' ? (
+          {typeof weather.cod === 'string' && weather.cod !== '200' ? (
             <View
               style={{
                 flex: 1,
@@ -123,7 +121,7 @@ function App() {
           ) : null}
 
           {typeof weather.main !== 'undefined' &&
-          typeof forecasts !== 'undefined' ? (
+          typeof forecasts.list !== 'undefined' ? (
             <CarouselContainer weather={weather} forecasts={forecasts} />
           ) : null}
         </View>
