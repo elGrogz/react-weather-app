@@ -17,19 +17,10 @@ import {
   defaultImage,
 } from './src/utils/weatherUtils';
 
-// const api = {
-//   key: '8e8a5629885d66a0857172614fc0f5bd',
-//   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
-// };
-
 function App() {
   const [query, setQuery] = useState<string>('');
-  const [weather, setWeather] = useState<WeatherResponse | ErrorResponse | {}>(
-    {},
-  );
-  const [forecasts, setForecasts] = useState<
-    ForecastResponse | ErrorResponse | {}
-  >({});
+  const [weather, setWeather] = useState({});
+  const [forecasts, setForecasts] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string | null>(
     defaultImage,
@@ -39,41 +30,21 @@ function App() {
     console.log('APP ONE');
     setLastSearchedCity(query);
     console.log('APP TWO');
-    getWeatherData(query)
-      .then(data => {
-        // console.log(data);
-        setWeather(data.currentWeather);
-        setForecasts(data.forecastData);
-        console.log('POST WEATHER: ', weather);
-        console.log('POST FORECAST: ', forecasts);
-      })
-      .catch(err => console.log(err));
-    console.log('APP THREE');
-
-    // fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     // console.log('PRE WEATHER: ', result);
-    //     setWeather(result);
-    //     // console.log('POST WEATHER: ', weather);
-    //   });
-
-    // fetch(`${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`)
-    //   .then(response => response.json())
-    //   .then(result => {
-    //     if (typeof result.list !== undefined) {
-    //       // console.log('PRE FORECAST: ', result);
-    //       setForecasts(result);
-    //       // console.log('POST FORECAST: ', forecasts);
-    //     }
-    //   });
-
-    const backgroundUrl = updateBackgroundUrl(weather);
+    const weatherData = await getWeatherData(query);
+    console.log('APP THREE', weatherData);
+    setWeather(weatherData.currentWeather);
+    console.log('POST WEATHER: ', weather);
     console.log('APP FOUR');
-    setBackgroundImageUrl(backgroundUrl);
+    setForecasts(weatherData.forecastData);
+    console.log('POST FORECAST: ', forecasts);
+
     console.log('APP FIVE');
-    setQuery('');
+    const backgroundUrl = updateBackgroundUrl(weather);
     console.log('APP SIX');
+    setBackgroundImageUrl(backgroundUrl);
+    console.log('APP SEVEN');
+    setQuery('');
+    console.log('APP EIGHT');
   };
 
   return (
@@ -151,7 +122,7 @@ function App() {
             </View>
           ) : null}
 
-          {typeof weather?.main !== 'undefined' &&
+          {typeof weather.main !== 'undefined' &&
           typeof forecasts !== 'undefined' ? (
             <CarouselContainer weather={weather} forecasts={forecasts} />
           ) : null}

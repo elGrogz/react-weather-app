@@ -23,27 +23,29 @@ const api = {
 export const getWeatherData = async (query: string) => {
   console.log('FETCH ONE');
 
-  const currentWeatherResponse = await fetch(
-    `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
-  );
+  return new Promise(async (resolve, reject) => {
+    const currentWeatherResponse = await fetch(
+      `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
+    );
 
-  const currentWeather = await currentWeatherResponse.json();
+    const currentWeather = await currentWeatherResponse.json();
 
-  // console.log(currentWeather);
-  console.log('FETCH TWO');
+    // console.log(currentWeather);
+    console.log('FETCH TWO');
 
-  const forecastDataResponse = await fetch(
-    `${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`,
-  );
-  const forecastData = await forecastDataResponse.json();
+    const forecastDataResponse = await fetch(
+      `${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`,
+    );
+    const forecastData = await forecastDataResponse.json();
 
-  // console.log(forecastData);
-  console.log('FETCH THREE');
+    // console.log(forecastData);
+    console.log('FETCH THREE');
 
-  return Promise.resolve({currentWeather, forecastData});
+    resolve({currentWeather, forecastData});
+  });
 };
 
-export const updateBackgroundUrl = (weather: any) => {
+export const updateBackgroundUrl = weather => {
   let backgroundUrl;
 
   const date = Math.round(Date.now() / 1000);

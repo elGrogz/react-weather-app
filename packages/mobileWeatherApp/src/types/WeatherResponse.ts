@@ -1,8 +1,12 @@
+export function isWeather(weather: WeatherResponse): weather is WeatherResponse {
+  return (weather as WeatherResponse) !== undefined;
+}
+
 export type WeatherResponse = {
   weather: BaseWeather;
 };
 
-interface BaseWeather {
+export interface BaseWeather {
   coord: Coord;
   weather: Weather[];
   base: string;
@@ -18,7 +22,7 @@ interface BaseWeather {
   cod: number;
 }
 
-interface Sys {
+export interface Sys {
   type: number;
   id: number;
   country: string;
@@ -26,16 +30,16 @@ interface Sys {
   sunset: number;
 }
 
-interface Clouds {
+export interface Clouds {
   all: number;
 }
 
-interface Wind {
+export interface Wind {
   speed: number;
   deg: number;
 }
 
-interface Main {
+export interface Main {
   temp: number;
   feels_like: number;
   temp_min: number;
@@ -44,14 +48,14 @@ interface Main {
   humidity: number;
 }
 
-interface Weather {
+export interface Weather {
   id: number;
   main: string;
   description: string;
   icon: string;
 }
 
-interface Coord {
+export interface Coord {
   lon: number;
   lat: number;
 }

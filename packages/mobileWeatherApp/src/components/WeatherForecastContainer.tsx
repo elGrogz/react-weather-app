@@ -2,26 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 
 const WeatherForecastContainer = props => {
-  console.log(props.forecasts.list[0]);
+  // if (props.forecasts.list !== 'undefined') {
 
-  // const forecasts = props.forecasts.list.slice(0, 7);
-
-  // useEffect(() => {
-  // console.log(props.forecasts.list[0].dt);
-  // if (typeof forecastList !== 'undefined') {
-  // const forecasts = props.forecasts.list.slice(0, 7);
-  // setForecastList(forecasts);
-  // console.log(forecastList);
+  //   console.log(props.forecasts.list[0]);
   // }
-  // }, [props, forecastList]);
 
   const ForecastItem = forecastProps => {
-    console.log(forecastProps.forecastProps.dt);
     return (
-      <View>
+      <View style={{marginBottom: 10}}>
         <Text>{forecastProps.forecastProps.dt}</Text>
         <Text>{forecastProps.forecastProps.main.temp}</Text>
-        <Text>{forecastProps.forecastProps.main.weather[0].main}</Text>
+        <Text>{forecastProps.forecastProps.weather[0].main}</Text>
       </View>
     );
   };
@@ -40,14 +31,14 @@ const WeatherForecastContainer = props => {
       }}>
       {props.forecasts.list !== 'undefined' ? (
         <View style={{marginLeft: 5}}>
-          {/* <Text>{props.forecasts.list[0].dt}</Text> */}
-          {/* <Text>{props.forecasts.list[1].main.temp}</Text> */}
-          {/* <Text>{props.forecasts.list[2].main.temp}</Text>
-          <Text>{props.forecasts.list[3].main.temp}</Text>
-          <Text>{props.forecasts.list[4].main.temp}</Text>
-          <Text>{props.forecasts.list[5].main.temp}</Text>
-          <Text>{props.forecasts.list[6].main.temp}</Text>\ */}
           <ForecastItem forecastProps={props.forecasts.list[0]} />
+          <ForecastItem forecastProps={props.forecasts.list[1]} />
+          <ForecastItem forecastProps={props.forecasts.list[2]} />
+          <ForecastItem forecastProps={props.forecasts.list[3]} />
+          <ForecastItem forecastProps={props.forecasts.list[4]} />
+          <ForecastItem forecastProps={props.forecasts.list[5]} />
+          <ForecastItem forecastProps={props.forecasts.list[6]} />
+          <ForecastItem forecastProps={props.forecasts.list[7]} />
         </View>
       ) : null}
     </View>
