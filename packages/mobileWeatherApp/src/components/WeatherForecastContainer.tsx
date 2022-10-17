@@ -7,12 +7,12 @@ const WeatherForecastContainer = props => {
   //   console.log(props.forecasts.list[0]);
   // }
 
-  const ForecastItem = forecastProps => {
+  const ForecastItem = props => {
     return (
       <View style={{marginBottom: 10}}>
-        <Text>{forecastProps.forecastProps.dt}</Text>
-        <Text>{forecastProps.forecastProps.main.temp}</Text>
-        <Text>{forecastProps.forecastProps.weather[0].main}</Text>
+        <Text>{props.forecast.dt}</Text>
+        <Text>{props.forecast.main.temp}</Text>
+        <Text>{props.forecast.weather[0].main}</Text>
       </View>
     );
   };
@@ -31,14 +31,17 @@ const WeatherForecastContainer = props => {
       }}>
       {props.forecasts.list !== 'undefined' ? (
         <View style={{marginLeft: 5}}>
-          <ForecastItem forecastProps={props.forecasts.list[0]} />
+          {props.forecasts.list.map(forecast => {
+            <ForecastItem forecast={forecast} />;
+          })}
+          {/* <ForecastItem forecastProps={props.forecasts.list[0]} />
           <ForecastItem forecastProps={props.forecasts.list[1]} />
           <ForecastItem forecastProps={props.forecasts.list[2]} />
           <ForecastItem forecastProps={props.forecasts.list[3]} />
           <ForecastItem forecastProps={props.forecasts.list[4]} />
           <ForecastItem forecastProps={props.forecasts.list[5]} />
           <ForecastItem forecastProps={props.forecasts.list[6]} />
-          <ForecastItem forecastProps={props.forecasts.list[7]} />
+          <ForecastItem forecastProps={props.forecasts.list[7]} /> */}
         </View>
       ) : null}
     </View>
