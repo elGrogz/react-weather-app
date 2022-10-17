@@ -1,3 +1,7 @@
+import {WeatherResponse} from '../../src/types/WeatherResponse';
+import {ErrorResponse} from '../../src/types/ErrorResponse';
+import {ForecastResponse} from '../../src/types/ForecastResponse';
+
 export const defaultImage = require('../../public/default.jpg');
 const clearDay = require('../../public/clear-day.jpg');
 const clearNight = require('../../public/clear-night.jpg');
@@ -16,31 +20,30 @@ const api = {
   baseApiUrl: 'https://api.openweathermap.org/data/2.5/',
 };
 
-export const getWeatherData = query => {
-  return (
-    Promise.all([
-      fetch(
-        `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
-      ),
-      fetch(
-        `${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`,
-      ),
-    ])
-      .then(responses =>
-        Promise.all(
-          responses.map(res => {
-            return res.json();
-          }),
-        ),
-      )
-      // .then(data => {
-      //   return data;
-      // })
-      .catch()
+export const getWeatherData = async (query: string) => {
+  console.log('FETCH ONE');
+
+  const currentWeatherResponse = await fetch(
+    `${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`,
   );
+
+  const currentWeather = await currentWeatherResponse.json();
+
+  // console.log(currentWeather);
+  console.log('FETCH TWO');
+
+  const forecastDataResponse = await fetch(
+    `${api.baseApiUrl}forecast?q=${query}&units=metric&APPID=${api.key}`,
+  );
+  const forecastData = await forecastDataResponse.json();
+
+  // console.log(forecastData);
+  console.log('FETCH THREE');
+
+  return Promise.resolve({currentWeather, forecastData});
 };
 
-export const updateBackgroundUrl = weather => {
+export const updateBackgroundUrl = (weather: any) => {
   let backgroundUrl;
 
   const date = Math.round(Date.now() / 1000);

@@ -9,8 +9,13 @@ import {
 // import WeatherInfoContainer from './src/components/WeatherInfoContainer';
 import {WeatherResponse} from './src/types/WeatherResponse';
 import {ErrorResponse} from './src/types/ErrorResponse';
+import {ForecastResponse} from './src/types/ForecastResponse';
 import CarouselContainer from './src/components/CarouselContainer';
-import {updateBackgroundUrl, getWeatherData, defaultImage} from './src/utils/weatherUtils';
+import {
+  updateBackgroundUrl,
+  getWeatherData,
+  defaultImage,
+} from './src/utils/weatherUtils';
 
 // const api = {
 //   key: '8e8a5629885d66a0857172614fc0f5bd',
@@ -19,25 +24,31 @@ import {updateBackgroundUrl, getWeatherData, defaultImage} from './src/utils/wea
 
 function App() {
   const [query, setQuery] = useState<string>('');
-  const [weather, setWeather] = useState<any>({});
-  const [forecasts, setForecasts] = useState<any>({});
+  const [weather, setWeather] = useState<WeatherResponse | ErrorResponse | {}>(
+    {},
+  );
+  const [forecasts, setForecasts] = useState<
+    ForecastResponse | ErrorResponse | {}
+  >({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const [backgroundImageUrl, setBackgroundImageUrl] = useState<string | null>(
     defaultImage,
   );
 
   const search = async () => {
-    console.log("ONE");
+    console.log('APP ONE');
     setLastSearchedCity(query);
-    console.log("TWO");
-    getWeatherData(query).then(data => {
-      // console.log(data);
-      setWeather(data[0]);
-      setForecasts(data[1]);
-      // console.log('POST WEATHER: ', weather);
-      // console.log('POST FORECAST: ', forecasts);
-    });
-    console.log("THREE");
+    console.log('APP TWO');
+    getWeatherData(query)
+      .then(data => {
+        // console.log(data);
+        setWeather(data.currentWeather);
+        setForecasts(data.forecastData);
+        console.log('POST WEATHER: ', weather);
+        console.log('POST FORECAST: ', forecasts);
+      })
+      .catch(err => console.log(err));
+    console.log('APP THREE');
 
     // fetch(`${api.baseApiUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
     //   .then(response => response.json())
@@ -58,11 +69,11 @@ function App() {
     //   });
 
     const backgroundUrl = updateBackgroundUrl(weather);
-    console.log("FOUR");
+    console.log('APP FOUR');
     setBackgroundImageUrl(backgroundUrl);
-    console.log("FIVE");
+    console.log('APP FIVE');
     setQuery('');
-    console.log("SIX");
+    console.log('APP SIX');
   };
 
   return (
