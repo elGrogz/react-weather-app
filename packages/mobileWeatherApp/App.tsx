@@ -27,12 +27,12 @@ function App() {
     setLastSearchedCity(query);
     console.log('APP TWO');
     const weatherData = await getWeatherData(query);
-    console.log('APP THREE', weatherData);
+    // console.log('APP THREE', weatherData);
     setWeather(weatherData.currentWeather);
-    console.log('POST WEATHER: ', weather);
+    // console.log('POST WEATHER: ', weather);
     console.log('APP FOUR');
     setForecasts(weatherData.forecastData);
-    console.log('POST FORECAST: ', forecasts);
+    // console.log('POST FORECAST: ', forecasts);
 
     console.log('APP FIVE');
     const backgroundUrl = updateBackgroundUrl(weather);
