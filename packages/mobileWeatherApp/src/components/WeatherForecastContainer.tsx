@@ -1,58 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
+
+import {ForecastItem} from './ForecastItemContainer';
 
 const WeatherForecastContainer = props => {
-  const ForecastItem = forecastProps => {
-    return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          marginVertical: '2%',
-          alignSelf: 'center',
-          alignItems: 'center',
-          width: '90%',
-          // height: '1%',
-          backgroundColor: 'rgba(255,255,255,0.2)',
-          borderRadius: 10,
-        }}>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text
-            style={{
-              fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
-              fontFamily: 'Avenir',
-              fontSize: 15
-            }}>
-            {forecastProps.time}
-          </Text>
-        </View>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text
-            style={{
-              fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
-              fontFamily: 'Avenir',
-              fontSize: 30
-            }}>
-            {Math.round(forecastProps.mainTemp)}°C
-          </Text>
-        </View>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text
-            style={{
-              fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
-              fontFamily: 'Avenir',
-              fontSize: 22
-            }}>
-            {forecastProps.mainWeather}
-          </Text>
-        </View>
-      </View>
-    );
-  };
-
   return (
     <View
       name="forecast-container"
