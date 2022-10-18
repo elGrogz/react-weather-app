@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -43,8 +43,12 @@ function App() {
     console.log('APP SEVEN');
     setQuery('');
     console.log('APP EIGHT');
-    console.log('NO of FORECASTS', forecasts.list.length);
   };
+  
+  useEffect(() => {
+
+    console.log('NO of FORECASTS', forecasts?.list?.length);
+  }, [forecasts.list])
 
   return (
     <View style={{flex: 1, fontFamily: 'Avenir'}}>

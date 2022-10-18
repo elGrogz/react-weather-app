@@ -9,10 +9,54 @@ const WeatherForecastContainer = props => {
 
   const ForecastItem = forecastProps => {
     return (
-      <View style={{marginBottom: 10}}>
-        <Text>{forecastProps.time}</Text>
-        <Text>{forecastProps.mainTemp}</Text>
-        <Text>{forecastProps.mainWeather}</Text>
+      // <View style={{marginBottom: 10}}>
+      //   <Text>{forecastProps.time}</Text>
+      //   <Text>{forecastProps.mainTemp}</Text>
+      //   <Text>{forecastProps.mainWeather}</Text>
+      // </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          marginVertical: '2%',
+          alignSelf: 'center',
+          // position: 'absolute',
+          // bottom: 1,
+          width: '90%',
+          height: '5%',
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          borderRadius: 10,
+        }}>
+        <View style={{flex: 1, alignItems: 'center'}}>
+          <Text
+            style={{
+              fontSize: 30,
+              color: 'rgba(255,255,255,0.8)',
+              fontFamily: 'Avenir',
+            }}>
+            {forecastProps.time}
+          </Text>
+        </View>
+        <View style={{flex: 1, alignItems: 'center'}}>
+          <Text
+            style={{
+              fontSize: 30,
+              color: 'rgba(255,255,255,0.8)',
+              fontFamily: 'Avenir',
+            }}>
+            {Math.round(forecastProps.mainTemp)}
+          </Text>
+        </View>
+        <View style={{flex: 1, alignItems: 'center'}}>
+          <Text
+            style={{
+              fontSize: 30,
+              color: 'rgba(255,255,255,0.8)',
+              fontFamily: 'Avenir',
+            }}>
+            {forecastProps.mainWeather}
+          </Text>
+        </View>
       </View>
     );
   };
@@ -23,14 +67,14 @@ const WeatherForecastContainer = props => {
 
   return (
     <View
+      className="forecast-container"
       style={{
         width: '100%',
         flex: 1,
+        flexDirection: 'column',
         marginTop: '2%',
-        paddingTop: '10%',
       }}>
-      {/* {props.forecasts.list !== 'undefined' ? ( */}
-      <View style={{marginLeft: 5}}>
+      <View style={{marginLeft: 5, flex: 1, flexDirection: 'column'}}>
         {props.forecasts.list.map((forecast, index) =>
           index < 7 ? (
             <ForecastItem
