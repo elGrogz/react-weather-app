@@ -2,28 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 
 const WeatherForecastContainer = props => {
-  // if (props.forecasts.list !== 'undefined') {
-
-  // console.log(props.forecasts.list.length);
-  // }
-
   const ForecastItem = forecastProps => {
     return (
-      // <View style={{marginBottom: 10}}>
-      //   <Text>{forecastProps.time}</Text>
-      //   <Text>{forecastProps.mainTemp}</Text>
-      //   <Text>{forecastProps.mainWeather}</Text>
-      // </View>
       <View
         style={{
           flex: 1,
           flexDirection: 'row',
           marginVertical: '2%',
           alignSelf: 'center',
-          // position: 'absolute',
-          // bottom: 1,
+          alignItems: 'center',
           width: '90%',
-          height: '5%',
+          // height: '1%',
           backgroundColor: 'rgba(255,255,255,0.2)',
           borderRadius: 10,
         }}>
@@ -33,6 +22,7 @@ const WeatherForecastContainer = props => {
               fontSize: 30,
               color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
+              fontSize: 15
             }}>
             {forecastProps.time}
           </Text>
@@ -43,8 +33,9 @@ const WeatherForecastContainer = props => {
               fontSize: 30,
               color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
+              fontSize: 30
             }}>
-            {Math.round(forecastProps.mainTemp)}
+            {Math.round(forecastProps.mainTemp)}°C
           </Text>
         </View>
         <View style={{flex: 1, alignItems: 'center'}}>
@@ -53,6 +44,7 @@ const WeatherForecastContainer = props => {
               fontSize: 30,
               color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
+              fontSize: 22
             }}>
             {forecastProps.mainWeather}
           </Text>
@@ -61,18 +53,15 @@ const WeatherForecastContainer = props => {
     );
   };
 
-  // const forecastItems = forecasts.map(forecast => {
-  //   <ForecastItem forecast={forecast} style={{marginLeft: 5}} />;
-  // });
-
   return (
     <View
-      className="forecast-container"
+      name="forecast-container"
       style={{
         width: '100%',
         flex: 1,
         flexDirection: 'column',
         marginTop: '2%',
+        marginBottom: '10%',
       }}>
       <View style={{marginLeft: 5, flex: 1, flexDirection: 'column'}}>
         {props.forecasts.list.map((forecast, index) =>

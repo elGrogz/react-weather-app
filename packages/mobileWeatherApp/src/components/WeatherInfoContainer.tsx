@@ -80,6 +80,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
           flexDirection: 'row',
           marginBottom: '20%',
           alignSelf: 'center',
+          alignItems: 'center',
           position: 'absolute',
           bottom: 1,
           width: '80%',
