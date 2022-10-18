@@ -2,18 +2,18 @@ import {WeatherResponse} from '../types/WeatherResponse';
 import {ErrorResponse} from '../types/ErrorResponse';
 import {ForecastResponse} from '../types/ForecastResponse';
 
-export const defaultImage = require('../../public/default.jpg');
-const clearDay = require('../../public/clear-day.jpg');
-const clearNight = require('../../public/clear-night.jpg');
-const cloudyDay = require('../../public/cloudy-day.jpg');
-const cloudyNight = require('../../public/cloudy-night.jpg');
-const drizzleDay = require('../../public/drizzle-day.jpg');
-const rainDay = require('../../public/rain-day.jpg');
-const rainNight = require('../../public/rain-night.jpg');
-const snowDay = require('../../public/snow-day.jpg');
-const snowNight = require('../../public/snow-night.jpg');
-const thunderstormDay = require('../../public/thunderstorm-day.jpg');
-const thunderstormNight = require('../../public/thunderstorm-night.jpg');
+export const defaultImage = '../../public/default.jpg';
+const clearDay = '../../public/clear-day.jpg';
+const clearNight = '../../public/clear-night.jpg';
+const cloudyDay = '../../public/cloudy-day.jpg';
+const cloudyNight = '../../public/cloudy-night.jpg';
+const drizzleDay = '../../public/drizzle-day.jpg';
+const rainDay = '../../public/rain-day.jpg';
+const rainNight = '../../public/rain-night.jpg';
+const snowDay = '../../public/snow-day.jpg';
+const snowNight = '../../public/snow-night.jpg';
+const thunderstormDay = '../../public/thunderstorm-day.jpg';
+const thunderstormNight = '../../public/thunderstorm-night.jpg';
 
 const api = {
   key: '8e8a5629885d66a0857172614fc0f5bd',
@@ -38,7 +38,7 @@ export const getWeatherData = async (query: string) => {
 };
 
 export const updateBackgroundUrl = weather => {
-  let backgroundUrl;
+  let backgroundUrl = defaultImage;
 
   console.log("UPDATE BACKGROUND - WEATHER OBJECT: ", {weather});
 
