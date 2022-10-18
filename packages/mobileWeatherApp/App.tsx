@@ -43,6 +43,7 @@ function App() {
     console.log('APP SEVEN');
     setQuery('');
     console.log('APP EIGHT');
+    console.log('NO of FORECASTS', forecasts.list.length);
   };
 
   return (
