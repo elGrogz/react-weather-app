@@ -18,6 +18,7 @@ const WeatherForecastContainer = props => {
         {props.forecasts.list.map((forecast, index) =>
           index < 7 ? (
             <ForecastItem
+              key={index}
               time={forecast.dt_txt}
               mainTemp={forecast.main.temp}
               mainWeather={forecast.weather[0].main}

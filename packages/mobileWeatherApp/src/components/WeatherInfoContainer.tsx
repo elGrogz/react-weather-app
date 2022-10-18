@@ -1,46 +1,7 @@
 import {Text, View} from 'react-native';
-import {WeatherResponse} from '../types/WeatherResponse';
+import {dateBuilder, dayBuilder} from '../utils/appUtils';
 
 const WeatherInfoContainer: React.FC<any> = props => {
-  const dayBuilder = (date: Date): string => {
-    let days = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ];
-
-    let day = days[date.getDay()];
-
-    return `${day}`;
-  };
-
-  const dateBuilder = (d: Date): string => {
-    let months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${date} ${month} ${year}`;
-  };
-
   return (
     <View
       name="current-weather-pane"

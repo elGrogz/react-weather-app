@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -11,44 +11,33 @@ import {
   updateBackgroundUrl,
   getWeatherData,
   defaultImage,
-} from './src/utils/weatherUtils';
+} from './src/utils/appUtils';
 
 function App() {
   const [query, setQuery] = useState<string>('');
   const [weather, setWeather] = useState({});
   const [forecasts, setForecasts] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
-  const [backgroundImageUrl, setBackgroundImageUrl] = useState<string | null>(
-    defaultImage,
-  );
+  const [backgroundImageUrl, setBackgroundImageUrl] =
+    useState<string>(defaultImage);
 
   const search = async () => {
-    console.log('APP ONE');
+    // console.log('APP ONE');
     setLastSearchedCity(query);
-    console.log('APP TWO');
     const weatherData = await getWeatherData(query);
-    // console.log('APP THREE', weatherData);
     setWeather(weatherData.currentWeather);
-    // console.log('POST WEATHER: ', weather);
-    console.log('APP FOUR');
     setForecasts(weatherData.forecastData);
-    // console.log('POST FORECAST: ', forecasts);
 
-    console.log('APP FIVE');
+    // console.log('APP TWO');
     const backgroundUrl = updateBackgroundUrl(weather);
     console.log('BACKGROUND URL: ', backgroundUrl);
-    console.log('APP SIX');
+    // console.log('APP THREE');
     setBackgroundImageUrl(updateBackgroundUrl(weather));
     console.log('BACKGROUNDIMAGE URL: ', backgroundImageUrl);
-    console.log('APP SEVEN');
+    // console.log('APP FOUR');
     setQuery('');
-    console.log('APP EIGHT');
+    // console.log('APP FIVE');
   };
-  
-  useEffect(() => {
-
-    console.log('NO of FORECASTS', forecasts?.list?.length);
-  }, [forecasts.list])
 
   return (
     <View style={{flex: 1, fontFamily: 'Avenir'}}>
@@ -70,7 +59,7 @@ function App() {
               alignSelf: 'center',
               width: '80%',
               padding: 10,
-              marginTop: '20%',
+              marginTop: '15%',
               marginBottom: 10,
               backgroundColor: 'rgba(255,255,255,0.5)',
               borderColor: 'rgba(255,255,255,0.8)',
@@ -104,6 +93,7 @@ function App() {
                 fontSize: 20,
                 color: 'rgba(0,0,0,0.5)',
                 fontFamily: 'Avenir',
+                fontWeight: '700',
               }}>
               Get current weather!
             </Text>
