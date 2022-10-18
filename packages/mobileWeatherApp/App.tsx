@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Text,
   View,
@@ -7,37 +7,31 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import CarouselContainer from './src/components/CarouselContainer';
-import {
-  updateBackgroundUrl,
-  getWeatherData,
-  defaultImage,
-} from './src/utils/appUtils';
+import {updateBackgroundUrl, getWeatherData} from './src/utils/appUtils';
+
+const defaultImage = require('./public/default.jpg');
 
 function App() {
   const [query, setQuery] = useState<string>('');
   const [weather, setWeather] = useState({});
   const [forecasts, setForecasts] = useState({});
   const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
-  const [backgroundImageUrl, setBackgroundImageUrl] =
-    useState<string>(defaultImage);
+  const [backgroundImageUrl, setBackgroundImageUrl] = useState(defaultImage);
 
   const search = async () => {
-    // console.log('APP ONE');
     setLastSearchedCity(query);
     const weatherData = await getWeatherData(query);
     setWeather(weatherData.currentWeather);
     setForecasts(weatherData.forecastData);
+    setQuery('');
+  };
 
-    // console.log('APP TWO');
+  useEffect(() => {
     const backgroundUrl = updateBackgroundUrl(weather);
     console.log('BACKGROUND URL: ', backgroundUrl);
-    // console.log('APP THREE');
-    setBackgroundImageUrl(updateBackgroundUrl(weather));
+    setBackgroundImageUrl(backgroundUrl);
     console.log('BACKGROUNDIMAGE URL: ', backgroundImageUrl);
-    // console.log('APP FOUR');
-    setQuery('');
-    // console.log('APP FIVE');
-  };
+  }, [weather, backgroundImageUrl]);
 
   return (
     <View style={{flex: 1, fontFamily: 'Avenir'}}>

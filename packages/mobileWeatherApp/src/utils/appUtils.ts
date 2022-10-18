@@ -40,13 +40,20 @@ export const getWeatherData = async (query: string) => {
 export const updateBackgroundUrl = weather => {
   let backgroundUrl;
 
+  console.log("UPDATE BACKGROUND - WEATHER OBJECT: ", {weather});
+
   const date = Math.round(Date.now() / 1000);
+
+  console.log("UPDATE BACKGROUND - URL PRE SWITCH: ", backgroundUrl);
+
 
   if (
     typeof weather.weather !== 'undefined' &&
     typeof weather.sys !== 'undefined'
   ) {
     const isNight = date > weather.sys.sunset || date < weather.sys.sunrise;
+  console.log("UPDATE BACKGROUND - I'm in the switch");
+
     switch (true) {
       case weather.weather[0].main === 'Clear' && isNight: {
         backgroundUrl = clearNight;
@@ -102,6 +109,8 @@ export const updateBackgroundUrl = weather => {
       }
     }
   }
+
+  console.log("UPDATE BACKGROUND - POST SWITCH: ", backgroundUrl);
 
   return backgroundUrl;
 };
