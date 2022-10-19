@@ -121,7 +121,7 @@ function App() {
           style={{
             width:
               '100%' /* how much width the element takes up within its parent element */,
-            backgroundColor: 'rgba(255,255,255,0.2)',
+            backgroundColor: 'rgba(255,255,255,0.3)',
             height: '100%',
           }}>
           <View
