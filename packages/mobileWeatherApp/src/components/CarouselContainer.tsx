@@ -43,7 +43,7 @@ const CarouselContainer = props => {
       <Text
         key={i}
         style={{
-          // ...styles.bullet,
+          fontSize: 50,
           opacity: interval === i ? 0.5 : 0.1,
         }}>
         &bull;
@@ -55,6 +55,7 @@ const CarouselContainer = props => {
     <View
       style={{
         flex: 1,
+        height: '100%',
       }}>
       <ScrollView
         horizontal={true}
@@ -64,11 +65,11 @@ const CarouselContainer = props => {
         scrollEventThrottle={200}
         decelerationRate="fast"
         onScroll={data => {
-          // setWidth(data.nativeEvent.contentSize.width);
+          setWidth(data.nativeEvent.contentSize.width);
           setInterval(getInterval(data.nativeEvent.contentOffset.x));
         }}
         style={{
-          maxHeight: '100%',
+          height: '80%',
         }}
         pagingEnabled>
         <WeatherInfoContainer weather={props.weather} />
@@ -78,6 +79,9 @@ const CarouselContainer = props => {
       <View
         style={{
           flex: 1,
+          flexDirection: 'row',
+          alignSelf: 'center',
+          marginBottom: '1%',
         }}>
         {bullets}
       </View>

@@ -12,7 +12,7 @@ const WeatherForecastContainer = props => {
         flex: 1,
         flexDirection: 'column',
         marginTop: '2%',
-        marginBottom: '10%',
+        // marginBottom: '10%',
       }}>
       <View style={{marginLeft: 5, flex: 1, flexDirection: 'column'}}>
         {props.forecasts.list.map((forecast, index) =>
