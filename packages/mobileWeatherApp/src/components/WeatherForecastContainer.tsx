@@ -16,7 +16,7 @@ const WeatherForecastContainer = props => {
       }}>
       <View style={{marginLeft: 5, flex: 1, flexDirection: 'column'}}>
         {props.forecasts.list.map((forecast, index) =>
-          index < 7 ? (
+          index < 8 ? (
             <ForecastItem
               key={index}
               time={forecast.dt_txt}

@@ -17,7 +17,7 @@ const CarouselContainer = props => {
     // initialise width
     setWidth(width);
     // get total items present
-    const totalItems = 2;
+    const totalItems = 3;
     // initialise total intervals
     setIntervals(Math.ceil(totalItems));
     console.log('INIT FIRED: ' + intervals);
@@ -43,7 +43,7 @@ const CarouselContainer = props => {
       <Text
         key={i}
         style={{
-          fontSize: 50,
+          fontSize: 40,
           opacity: interval === i ? 0.5 : 0.1,
         }}>
         &bull;
@@ -74,14 +74,22 @@ const CarouselContainer = props => {
         pagingEnabled>
         <WeatherInfoContainer weather={props.weather} />
         <WeatherForecastContainer forecasts={props.forecasts} />
-        {/* <WeatherForecastContainer forecasts={props.forecasts} /> */}
+        <WeatherForecastContainer forecasts={props.forecasts} />
       </ScrollView>
       <View
         style={{
           flex: 1,
+          justifyContent: 'center',
           flexDirection: 'row',
+          paddingHorizontal: 10,
+          paddingTop: 5,
+          maxWidth: '20%',
+          // maxHeight: '5%',
           alignSelf: 'center',
-          marginBottom: '1%',
+          // marginBottom: '1%',
+          // maxHeight: '5%',
+          borderRadius: 100,
+          backgroundColor: 'rgba(255,255,255,0.2)',
         }}>
         {bullets}
       </View>
