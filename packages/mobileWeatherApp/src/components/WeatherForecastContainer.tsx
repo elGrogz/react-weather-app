@@ -15,7 +15,7 @@ const WeatherForecastContainer = props => {
         // marginBottom: '10%',
       }}>
       <View style={{marginLeft: 5, flex: 1, flexDirection: 'column'}}>
-        {props.forecasts.list.map((forecast, index) =>
+        {props.forecasts.map((forecast, index) =>
           index < 8 ? (
             <ForecastItem
               key={index}

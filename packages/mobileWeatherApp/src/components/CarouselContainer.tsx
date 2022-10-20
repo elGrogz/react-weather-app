@@ -8,9 +8,8 @@ const CarouselContainer = props => {
   const [intervals, setIntervals] = useState<number>(1);
   const [width, setWidth] = useState<number>(0);
 
-  useEffect(() => {
-    console.log('interval: ' + interval);
-  }, [interval]);
+  const firstDayOfForecasts = props.forecasts.slice(0, 8);
+  const secondDayOfForecasts = props.forecasts.slice(8, 15);
 
   const init = (width: number) => {
     console.log('INIT FIRED' + intervals);
@@ -73,8 +72,8 @@ const CarouselContainer = props => {
         }}
         pagingEnabled>
         <WeatherInfoContainer weather={props.weather} />
-        <WeatherForecastContainer forecasts={props.forecasts} />
-        <WeatherForecastContainer forecasts={props.forecasts} />
+        <WeatherForecastContainer forecasts={firstDayOfForecasts} />
+        <WeatherForecastContainer forecasts={secondDayOfForecasts} />
       </ScrollView>
       <View
         style={{
@@ -84,7 +83,7 @@ const CarouselContainer = props => {
           paddingHorizontal: 10,
           paddingTop: 5,
           maxWidth: '20%',
-          // maxHeight: '5%',
+          height: '5%',
           alignSelf: 'center',
           // marginBottom: '1%',
           // maxHeight: '5%',
