@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import CarouselContainer from './src/components/CarouselContainer';
 import {getWeatherData} from './src/utils/appUtils';
+import {exampleForecastResponse} from './exampleForecastApiResponse';
+import {exampleWeatherResponse} from './exampleWeatherApiResponse';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -32,9 +34,14 @@ function App() {
   const search = async () => {
     console.log('SEARCHING');
     setLastSearchedCity(query);
-    const weatherData = await getWeatherData(query);
-    setWeather(weatherData.currentWeather);
-    setForecasts(weatherData.forecastData);
+    // const weatherData = await getWeatherData(query);
+    // setWeather(weatherData.currentWeather);
+    // setForecasts(weatherData.forecastData);
+
+    console.log({exampleWeatherResponse});
+
+    setWeather(exampleWeatherResponse());
+    setForecasts(exampleForecastResponse());
     setQuery('');
   };
 

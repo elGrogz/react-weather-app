@@ -21,7 +21,7 @@ export const ForecastItem = props => {
             color: 'rgba(255,255,255,0.8)',
             fontFamily: 'Avenir',
           }}>
-          {props.time}
+          {props.time.toString().slice(0, -3)}
         </Text>
       </View>
       <View style={{flex: 1, alignItems: 'center'}}>

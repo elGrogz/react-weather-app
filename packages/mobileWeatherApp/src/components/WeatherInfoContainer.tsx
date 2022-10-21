@@ -9,17 +9,27 @@ const WeatherInfoContainer: React.FC<any> = props => {
       style={{
         flex: 1,
         width: '100%',
-        marginTop: '2%',
+        // marginTop: '2%',
         paddingTop: '5%',
+        // alignItems: 'center',
+        // alignContent: 'center',
+        // alignSelf: 'center',
       }}>
-      <View style={{marginLeft: 5}}>
+      <View
+        style={{
+          alignItems: 'center',
+          backgroundColor: 'rgba(255,255,255,0.1)',
+          borderRadius: 25,
+          padding: 10,
+        }}>
         <View>
-          <Text style={{fontSize: 20, fontFamily: 'Avenir'}}>
+          <Text
+            style={{fontSize: 20, fontFamily: 'Avenir', alignSelf: 'center'}}>
             {dayBuilder(new Date())}
           </Text>
           <Text
             style={{
-              marginBottom: 10,
+              // marginBottom: 10,
               fontSize: 20,
               fontFamily: 'Avenir',
             }}>
@@ -53,6 +63,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
           width: '80%',
           backgroundColor: 'rgba(255,255,255,0.2)',
           borderRadius: 10,
+          marginBottom: 5,
         }}>
         <View style={{flex: 1, alignItems: 'center'}}>
           <Text

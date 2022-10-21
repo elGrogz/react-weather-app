@@ -42,7 +42,7 @@ const CarouselContainer = props => {
       <Text
         key={i}
         style={{
-          fontSize: 40,
+          fontSize: 45,
           opacity: interval === i ? 0.5 : 0.1,
         }}>
         &bull;
@@ -78,17 +78,11 @@ const CarouselContainer = props => {
       <View
         style={{
           flex: 1,
-          justifyContent: 'center',
           flexDirection: 'row',
-          paddingHorizontal: 10,
-          paddingTop: 5,
-          maxWidth: '20%',
-          height: '5%',
           alignSelf: 'center',
-          // marginBottom: '1%',
-          // maxHeight: '5%',
-          borderRadius: 100,
-          backgroundColor: 'rgba(255,255,255,0.2)',
+          marginTop: '-4%',
+          marginBottom: '6%',
+          maxHeight: '5%',
         }}>
         {bullets}
       </View>
