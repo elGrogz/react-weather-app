@@ -1,4 +1,5 @@
-import {Text, View} from 'react-native';
+import React from 'react';
+import {Text, View, Image} from 'react-native';
 import {dateBuilder, dayBuilder} from '../utils/appUtils';
 
 const WeatherInfoContainer: React.FC<any> = props => {
@@ -34,6 +35,12 @@ const WeatherInfoContainer: React.FC<any> = props => {
         <Text style={{fontSize: 40, fontFamily: 'Avenir'}}>
           {props.weather.weather[0].main}
         </Text>
+        <Image
+          source={{
+            uri: `http://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`,
+          }}
+          style={{width: 50, height: 50}}
+        />
       </View>
       <View
         style={{
