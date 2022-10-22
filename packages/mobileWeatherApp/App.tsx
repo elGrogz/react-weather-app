@@ -34,14 +34,14 @@ function App() {
   const search = async () => {
     console.log('SEARCHING');
     setLastSearchedCity(query);
-    // const weatherData = await getWeatherData(query);
-    // setWeather(weatherData.currentWeather);
-    // setForecasts(weatherData.forecastData);
+    const weatherData = await getWeatherData(query);
+    setWeather(weatherData.currentWeather);
+    setForecasts(weatherData.forecastData);
 
-    console.log({exampleWeatherResponse});
-
-    setWeather(exampleWeatherResponse());
-    setForecasts(exampleForecastResponse());
+    // create dev/mock env response
+    // console.log({exampleWeatherResponse});
+    // setWeather(exampleWeatherResponse());
+    // setForecasts(exampleForecastResponse());
     setQuery('');
   };
 
