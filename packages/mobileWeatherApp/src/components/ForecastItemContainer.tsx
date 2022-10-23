@@ -10,7 +10,6 @@ export const ForecastItem = props => {
         marginVertical: '2%',
         alignSelf: 'center',
         alignItems: 'center',
-        justifyContent: 'center',
         width: '90%',
         backgroundColor: 'rgba(255,255,255,0.2)',
         borderRadius: 10,
@@ -20,7 +19,8 @@ export const ForecastItem = props => {
           fontSize: 15,
           color: 'rgba(255,255,255,0.8)',
           fontFamily: 'Avenir',
-          width: '25%',
+          width: '33%',
+          textAlign: 'center',
         }}>
         {props.time.toString().slice(0, -3)}
       </Text>
@@ -30,23 +30,34 @@ export const ForecastItem = props => {
           color: 'rgba(255,255,255,0.8)',
           fontFamily: 'Avenir',
           fontSize: 35,
+          width: '33%',
+          textAlign: 'center',
         }}>
         {Math.round(props.mainTemp)}°C
       </Text>
-      <Text
+      <View
         style={{
-          color: 'rgba(255,255,255,0.8)',
-          fontFamily: 'Avenir',
-          fontSize: 22,
+          flex: 1,
+          flexDirection: 'row',
+          width: '33%',
         }}>
-        {props.mainWeather}
-      </Text>
-      <Image
-        source={{
-          uri: `https://openweathermap.org/img/wn/${props.icon}@2x.png`,
-        }}
-        style={{width: 40, height: 40}}
-      />
+        <Text
+          style={{
+            color: 'rgba(255,255,255,0.8)',
+            fontFamily: 'Avenir',
+            alignSelf: 'center',
+            marginLeft: 'auto',
+            fontSize: 22,
+          }}>
+          {props.mainWeather}
+        </Text>
+        <Image
+          source={{
+            uri: `https://openweathermap.org/img/wn/${props.icon}@2x.png`,
+          }}
+          style={{width: 40, height: 40}}
+        />
+      </View>
     </View>
   );
 };
