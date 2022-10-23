@@ -22,6 +22,7 @@ const WeatherForecastContainer = props => {
               time={forecast.dt_txt}
               mainTemp={forecast.main.temp}
               mainWeather={forecast.weather[0].main}
+              icon={forecast.weather[0].icon}
             />
           ) : null,
         )}

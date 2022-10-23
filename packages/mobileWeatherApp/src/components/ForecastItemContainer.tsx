@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
 export const ForecastItem = props => {
   return (
@@ -43,6 +43,12 @@ export const ForecastItem = props => {
           }}>
           {props.mainWeather}
         </Text>
+        <Image
+          source={{
+            uri: `https://openweathermap.org/img/wn/${props.icon}@2x.png`,
+          }}
+          style={{width: 50, height: 50}}
+        />
       </View>
     </View>
   );

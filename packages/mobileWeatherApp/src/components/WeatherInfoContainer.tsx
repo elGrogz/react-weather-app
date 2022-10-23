@@ -47,7 +47,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
         </Text>
         <Image
           source={{
-            uri: `http://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`,
+            uri: `https://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`,
           }}
           style={{width: 50, height: 50}}
         />
