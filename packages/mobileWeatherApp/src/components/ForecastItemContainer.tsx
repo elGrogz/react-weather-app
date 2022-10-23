@@ -10,59 +10,43 @@ export const ForecastItem = props => {
         marginVertical: '2%',
         alignSelf: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
         width: '90%',
         backgroundColor: 'rgba(255,255,255,0.2)',
         borderRadius: 10,
       }}>
-      <View
+      <Text
         style={{
-          flex: 1,
-          alignItems: 'center',
-          maxWidth: '25%',
-          marginLeft: 10,
+          fontSize: 15,
+          color: 'rgba(255,255,255,0.8)',
+          fontFamily: 'Avenir',
+          width: '25%',
         }}>
-        <Text
-          style={{
-            fontSize: 15,
-            color: 'rgba(255,255,255,0.8)',
-            fontFamily: 'Avenir',
-          }}>
-          {props.time.toString().slice(0, -3)}
-        </Text>
-      </View>
-      <View style={{flex: 1, alignItems: 'center', maxWidth: '50%'}}>
-        <Text
-          style={{
-            color: 'rgba(255,255,255,0.8)',
-            fontFamily: 'Avenir',
-            fontSize: 35,
-          }}>
-          {Math.round(props.mainTemp)}°C
-        </Text>
-      </View>
-      <View
+        {props.time.toString().slice(0, -3)}
+      </Text>
+
+      <Text
         style={{
-          flex: 1,
-          flexDirection: 'row',
-          alignItems: 'center',
-          maxWidth: '25%',
-          marginRight: 10,
+          color: 'rgba(255,255,255,0.8)',
+          fontFamily: 'Avenir',
+          fontSize: 35,
         }}>
-        <Text
-          style={{
-            color: 'rgba(255,255,255,0.8)',
-            fontFamily: 'Avenir',
-            fontSize: 22,
-          }}>
-          {props.mainWeather}
-        </Text>
-        <Image
-          source={{
-            uri: `https://openweathermap.org/img/wn/${props.icon}@2x.png`,
-          }}
-          style={{width: 50, height: 50}}
-        />
-      </View>
+        {Math.round(props.mainTemp)}°C
+      </Text>
+      <Text
+        style={{
+          color: 'rgba(255,255,255,0.8)',
+          fontFamily: 'Avenir',
+          fontSize: 22,
+        }}>
+        {props.mainWeather}
+      </Text>
+      <Image
+        source={{
+          uri: `https://openweathermap.org/img/wn/${props.icon}@2x.png`,
+        }}
+        style={{width: 40, height: 40}}
+      />
     </View>
   );
 };
