@@ -14,7 +14,13 @@ export const ForecastItem = props => {
         backgroundColor: 'rgba(255,255,255,0.2)',
         borderRadius: 10,
       }}>
-      <View style={{flex: 1, alignItems: 'center'}}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          maxWidth: '25%',
+          marginLeft: 10,
+        }}>
         <Text
           style={{
             fontSize: 15,
@@ -24,17 +30,24 @@ export const ForecastItem = props => {
           {props.time.toString().slice(0, -3)}
         </Text>
       </View>
-      <View style={{flex: 1, alignItems: 'center'}}>
+      <View style={{flex: 1, alignItems: 'center', maxWidth: '50%'}}>
         <Text
           style={{
             color: 'rgba(255,255,255,0.8)',
             fontFamily: 'Avenir',
-            fontSize: 30,
+            fontSize: 35,
           }}>
           {Math.round(props.mainTemp)}°C
         </Text>
       </View>
-      <View style={{flex: 1, alignItems: 'center'}}>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          alignItems: 'center',
+          maxWidth: '25%',
+          marginRight: 10,
+        }}>
         <Text
           style={{
             color: 'rgba(255,255,255,0.8)',

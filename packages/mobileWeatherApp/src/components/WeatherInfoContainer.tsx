@@ -29,7 +29,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
           </Text>
           <Text
             style={{
-              // marginBottom: 10,
+              alignSelf: 'center',
               fontSize: 20,
               fontFamily: 'Avenir',
             }}>
@@ -42,15 +42,17 @@ const WeatherInfoContainer: React.FC<any> = props => {
         <Text style={{fontSize: 100, fontFamily: 'Avenir'}}>
           {Math.round(props.weather.main.temp)}°C
         </Text>
-        <Text style={{fontSize: 40, fontFamily: 'Avenir'}}>
-          {props.weather.weather[0].main}
-        </Text>
-        <Image
-          source={{
-            uri: `https://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`,
-          }}
-          style={{width: 50, height: 50}}
-        />
+        <View style={{flexDirection: 'row'}}>
+          <Text style={{fontSize: 40, fontFamily: 'Avenir'}}>
+            {props.weather.weather[0].main}
+          </Text>
+          <Image
+            source={{
+              uri: `https://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`,
+            }}
+            style={{width: 50, height: 50}}
+          />
+        </View>
       </View>
       <View
         style={{
