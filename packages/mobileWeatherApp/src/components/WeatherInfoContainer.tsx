@@ -17,7 +17,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
         // alignContent: 'center',
         // alignSelf: 'center',
       }}>
-      <ForecastOptionsContainer />
+      <ForecastOptionsContainer clearSearch={props.clearSearch} />
       <View
         style={{
           alignItems: 'center',

@@ -45,6 +45,11 @@ function App() {
     setQuery('');
   };
 
+  const clearSearch = () => {
+    setWeather({});
+    setForecasts({});
+  };
+
   useEffect(() => {
     let backgroundUrl = defaultImage;
     const date = Math.round(Date.now() / 1000);
@@ -205,7 +210,11 @@ function App() {
 
           {typeof weather.main !== 'undefined' &&
           typeof forecasts.list !== 'undefined' ? (
-            <CarouselContainer weather={weather} forecasts={forecasts.list} />
+            <CarouselContainer
+              weather={weather}
+              forecasts={forecasts.list}
+              clearSearch={clearSearch}
+            />
           ) : null}
         </View>
       </ImageBackground>

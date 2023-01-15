@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-const ForecastOptionsContainer: React.FC<any> = () => {
+const ForecastOptionsContainer: React.FC<any> = props => {
   return (
     <TouchableOpacity
       style={{
@@ -13,8 +13,7 @@ const ForecastOptionsContainer: React.FC<any> = () => {
         borderWidth: 2,
         borderRadius: 15,
       }}
-      // onPress={}
-    >
+      onPress={props.clearSearch}>
       <Text style={{fontFamily: 'Avenir', fontSize: 15, fontWeight: '700'}}>
         Clear search
       </Text>
