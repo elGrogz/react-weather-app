@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import WeatherInfoContainer from './WeatherInfoContainer';
 import WeatherForecastContainer from './WeatherForecastContainer';
 import {ScrollView, Text, View} from 'react-native';
@@ -43,7 +43,7 @@ const CarouselContainer = props => {
         key={i}
         style={{
           fontSize: 45,
-          opacity: interval === i ? 0.5 : 0.1,
+          opacity: interval === i ? 1 : 0.4,
         }}>
         &bull;
       </Text>,
@@ -81,7 +81,7 @@ const CarouselContainer = props => {
           flexDirection: 'row',
           alignSelf: 'center',
           marginTop: '-4%',
-          marginBottom: '6%',
+          marginBottom: '8%',
           maxHeight: '5%',
         }}>
         {bullets}

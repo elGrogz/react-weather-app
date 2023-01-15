@@ -11,14 +11,14 @@ const WeatherInfoContainer: React.FC<any> = props => {
         width: '100%',
         // marginTop: '2%',
         paddingTop: '5%',
-        // alignItems: 'center',
+        alignItems: 'center',
         // alignContent: 'center',
         // alignSelf: 'center',
       }}>
       <View
         style={{
           alignItems: 'center',
-          backgroundColor: 'rgba(255,255,255,0.1)',
+          backgroundColor: 'rgba(255,255,255,0.75)',
           borderRadius: 25,
           padding: 10,
         }}>
@@ -63,7 +63,7 @@ const WeatherInfoContainer: React.FC<any> = props => {
           position: 'absolute',
           bottom: 1,
           width: '80%',
-          backgroundColor: 'rgba(255,255,255,0.2)',
+          backgroundColor: 'rgba(255,255,255,0.75)',
           borderRadius: 10,
           marginBottom: 5,
         }}>
@@ -71,7 +71,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             {Math.round(props.weather.main.feels_like)}°C
@@ -79,7 +78,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 18,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             Feels like
@@ -89,7 +87,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             {Math.round(props.weather.wind.speed)} m/s
@@ -97,7 +94,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 18,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             Wind
@@ -107,7 +103,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 30,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             {Math.round(props.weather.main.humidity)}%
@@ -115,7 +110,6 @@ const WeatherInfoContainer: React.FC<any> = props => {
           <Text
             style={{
               fontSize: 18,
-              color: 'rgba(255,255,255,0.8)',
               fontFamily: 'Avenir',
             }}>
             Humidity

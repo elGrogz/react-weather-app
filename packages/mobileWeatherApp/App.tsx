@@ -128,7 +128,6 @@ function App() {
           style={{
             width:
               '100%' /* how much width the element takes up within its parent element */,
-            backgroundColor: 'rgba(255,255,255,0.3)',
             height: '100%',
           }}>
           <View
@@ -138,8 +137,8 @@ function App() {
               padding: 10,
               marginTop: '15%',
               marginBottom: 10,
-              backgroundColor: 'rgba(255,255,255,0.5)',
-              borderColor: 'rgba(255,255,255,0.8)',
+              backgroundColor: 'rgba(255,255,255,0.6)',
+              borderColor: 'rgba(255,255,255)',
               borderWidth: 2,
               borderRadius: 15,
             }}>
@@ -150,7 +149,7 @@ function App() {
               value={query}
               style={{
                 fontSize: 20,
-                color: 'rgba(0,0,0,0.5)',
+                color: 'rgba(0,0,0,0.8)',
                 fontFamily: 'Avenir',
               }}
             />
@@ -159,8 +158,8 @@ function App() {
             style={{
               padding: 10,
               alignSelf: 'center',
-              backgroundColor: 'rgba(255,255,255,0.5)',
-              borderColor: 'rgba(255,255,255,0.8)',
+              backgroundColor: 'rgba(255,255,255,0.8)',
+              borderColor: 'rgba(255,255,255)',
               borderWidth: 2,
               borderRadius: 15,
             }}
@@ -168,7 +167,7 @@ function App() {
             <Text
               style={{
                 fontSize: 20,
-                color: 'rgba(0,0,0,0.5)',
+                color: 'rgba(0,0,0,0.8)',
                 fontFamily: 'Avenir',
                 fontWeight: '700',
               }}>
