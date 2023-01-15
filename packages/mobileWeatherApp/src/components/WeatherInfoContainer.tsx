@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
 import {dateBuilder, dayBuilder} from '../utils/appUtils';
+import ForecastOptionsContainer from './ForecastOptionsContainer';
 
 const WeatherInfoContainer: React.FC<any> = props => {
   return (
@@ -10,11 +11,13 @@ const WeatherInfoContainer: React.FC<any> = props => {
         flex: 1,
         width: '100%',
         // marginTop: '2%',
-        paddingTop: '5%',
+        paddingTop: '8%',
         alignItems: 'center',
+        // justifyContent: 'center',
         // alignContent: 'center',
         // alignSelf: 'center',
       }}>
+      <ForecastOptionsContainer />
       <View
         style={{
           alignItems: 'center',

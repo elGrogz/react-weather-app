@@ -138,7 +138,7 @@ function App() {
               marginTop: '15%',
               marginBottom: 10,
               backgroundColor: 'rgba(255,255,255,0.6)',
-              borderColor: 'rgba(255,255,255)',
+              borderColor: 'rgba(0,0,0,0.7)',
               borderWidth: 2,
               borderRadius: 15,
             }}>
@@ -159,7 +159,7 @@ function App() {
               padding: 10,
               alignSelf: 'center',
               backgroundColor: 'rgba(255,255,255,0.8)',
-              borderColor: 'rgba(255,255,255)',
+              borderColor: 'rgba(0,0,0,0.7)',
               borderWidth: 2,
               borderRadius: 15,
             }}
