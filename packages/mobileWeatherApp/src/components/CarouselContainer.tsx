@@ -43,9 +43,10 @@ const CarouselContainer = props => {
         key={i}
         style={{
           fontSize: 45,
+          color: 'white',
           opacity: interval === i ? 1 : 0.4,
         }}>
-        &bull;
+        &bull; {/* code to make a bullet point */}
       </Text>,
     );
   }

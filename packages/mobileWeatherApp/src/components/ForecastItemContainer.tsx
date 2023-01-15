@@ -11,13 +11,12 @@ export const ForecastItem = props => {
         alignSelf: 'center',
         alignItems: 'center',
         width: '90%',
-        backgroundColor: 'rgba(255,255,255,0.2)',
+        backgroundColor: 'rgba(255,255,255,0.5)',
         borderRadius: 10,
       }}>
       <Text
         style={{
           fontSize: 15,
-          color: 'rgba(255,255,255,0.8)',
           fontFamily: 'Avenir',
           width: '33%',
           textAlign: 'center',
@@ -27,7 +26,6 @@ export const ForecastItem = props => {
 
       <Text
         style={{
-          color: 'rgba(255,255,255,0.8)',
           fontFamily: 'Avenir',
           fontSize: 35,
           width: '33%',
@@ -43,7 +41,6 @@ export const ForecastItem = props => {
         }}>
         <Text
           style={{
-            color: 'rgba(255,255,255,0.8)',
             fontFamily: 'Avenir',
             alignSelf: 'center',
             marginLeft: 'auto',

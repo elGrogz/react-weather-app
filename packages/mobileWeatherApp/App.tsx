@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import CarouselContainer from './src/components/CarouselContainer';
 import {getWeatherData} from './src/utils/appUtils';
-import {exampleForecastResponse} from './exampleForecastApiResponse';
-import {exampleWeatherResponse} from './exampleWeatherApiResponse';
+// import {exampleForecastResponse} from './exampleForecastApiResponse';
+// import {exampleWeatherResponse} from './exampleWeatherApiResponse';
 
 const defaultImage = require('./public/default.jpg');
 const clearDay = require('./public/clear-day.jpg');
@@ -182,10 +182,22 @@ function App() {
                 alignSelf: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
-                Could not find {lastSearchedCity}!
+              <Text
+                style={{
+                  fontSize: 30,
+                  color: 'red',
+                  fontFamily: 'Avenir',
+                  textAlign: 'center',
+                }}>
+                Could not find: {lastSearchedCity}
               </Text>
-              <Text style={{fontSize: 30, color: 'red', fontFamily: 'Avenir'}}>
+              <Text
+                style={{
+                  fontSize: 30,
+                  color: 'red',
+                  fontFamily: 'Avenir',
+                  paddingTop: 10,
+                }}>
                 Try again
               </Text>
             </View>
